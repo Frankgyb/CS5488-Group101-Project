@@ -25,14 +25,24 @@ venv/
 /requirement/Past_ProjectSamples/
 
 # ---------- bulk / regenerable data ----------
-/project/data/parquet/
-/project/data/output/cleaned/
-/project/data/output/out_of_use/_outputs/
-/project/data/output/sampled_km/
-/project/data/output/kmeans_full_result/
-/project/data/output/bi_aggregates_compact/
-/project/data/output/if_results_rowkeyed/full_scores_rowkeyed/
-/project/data/output/xgb_cost_calibration/sample5pct/
+# Each directory below is kept in the repository through a README.md placeholder,
+# so the folder structure stays visible on GitHub; only its contents are ignored.
+/project/data/parquet/*
+!/project/data/parquet/README.md
+/project/data/output/cleaned/*
+!/project/data/output/cleaned/README.md
+/project/data/output/out_of_use/_outputs/*
+!/project/data/output/out_of_use/_outputs/README.md
+/project/data/output/sampled_km/*
+!/project/data/output/sampled_km/README.md
+/project/data/output/kmeans_full_result/*
+!/project/data/output/kmeans_full_result/README.md
+/project/data/output/bi_aggregates_compact/*
+!/project/data/output/bi_aggregates_compact/README.md
+/project/data/output/if_results_rowkeyed/full_scores_rowkeyed/*
+!/project/data/output/if_results_rowkeyed/full_scores_rowkeyed/README.md
+/project/data/output/xgb_cost_calibration/sample5pct/*
+!/project/data/output/xgb_cost_calibration/sample5pct/README.md
 /project/data/output/**/_spark_tmp/
 
 # ---------- Hadoop / Spark local artefacts ----------
