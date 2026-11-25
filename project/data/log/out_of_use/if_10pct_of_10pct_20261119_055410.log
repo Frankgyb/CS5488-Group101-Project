@@ -1,0 +1,44 @@
+2026-11-19 05:54:24,148 INFO Spark session started (distributed loading & sampling).
+2026-11-19 05:54:24,149 INFO [PARALLEL] Reading 10% sample parquet with Spark...
+2026-11-19 05:54:25,724 INFO [PARALLEL] Stratified sampling per bucket (distributed sampleBy)...
+2026-11-19 05:54:32,155 INFO Sampled 10% of 10% sample => 4,672,734 rows (distributed sampling done).
+2026-11-19 05:54:32,155 INFO Collecting sampled features to driver...
+2026-11-19 05:54:35,012 INFO Collected 4,672,734 rows into pandas DataFrame.
+2026-11-19 05:54:35,012 INFO [PARALLEL] StandardScaler using sklearn (vectorized, multi-threaded BLAS)...
+2026-11-19 05:54:35,758 INFO Feature scaling completed.
+2026-11-19 05:54:36,101 INFO [PARALLEL] Training IsolationForest (n_jobs=4, max_samples=512)...
+2026-11-19 05:54:40,571 INFO Training completed (parallel tree construction).
+2026-11-19 05:54:40,571 INFO [PARALLEL] Computing anomaly scores (parallel_backend threading)...
+2026-11-19 05:54:48,767 INFO IQR fallback: threshold=-0.1664, anomaly ratio=0.29%
+2026-11-19 05:54:48,794 INFO Anomalies detected (dynamic threshold, method=iqr): 13,577 (0.29%)
+2026-11-19 05:54:52,592 INFO Results saved to D:\CS5488project_Group101\project\data\output\if_results_10pct_of_10pct
+2026-11-19 05:54:52,592 INFO [PARALLEL] Computing SHAP values (multi-process over chunks, 2000 samples)...
+2026-11-19 05:54:58,770 INFO SHAP values saved (parallel computation, 2000 samples).
+2026-11-19 05:54:58,770 INFO Total sampled rows: 4,672,734
+2026-11-19 05:54:58,770 INFO Anomalies selected: 13,577
+2026-11-19 05:54:58,771 INFO Anomaly ratio: 0.291%
+2026-11-19 05:54:58,771 INFO Script finished successfully.
+2026-11-19 05:54:58,771 INFO === Quick Quality Check ===
+2026-11-19 05:54:58,943 INFO Features with largest mean difference between anomaly and normal:
+2026-11-19 05:54:58,943 INFO   speed_mph: anomaly mean is higher by 24.655
+2026-11-19 05:54:58,943 INFO   log_tips: anomaly mean is higher by 2.458
+2026-11-19 05:54:58,943 INFO   log_miles: anomaly mean is higher by 2.232
+2026-11-19 05:54:58,943 INFO   log_fare: anomaly mean is higher by 1.984
+2026-11-19 05:54:58,943 INFO   log_duration: anomaly mean is higher by 1.383
+2026-11-19 05:54:59,982 INFO Top 10 most anomalous samples:
+2026-11-19 05:54:59,983 INFO   Score=-0.2459 | bucket=hot | fare=5.53, miles=4.62, speed=51.66, duration=4.76
+2026-11-19 05:54:59,983 INFO   Score=-0.2453 | bucket=hot | fare=5.53, miles=4.52, speed=49.89, duration=4.71
+2026-11-19 05:54:59,983 INFO   Score=-0.2441 | bucket=hot | fare=5.53, miles=4.52, speed=46.97, duration=4.76
+2026-11-19 05:54:59,983 INFO   Score=-0.2393 | bucket=hot | fare=5.45, miles=4.54, speed=45.95, duration=4.80
+2026-11-19 05:54:59,983 INFO   Score=-0.2385 | bucket=hot | fare=5.53, miles=4.60, speed=52.14, duration=4.74
+2026-11-19 05:54:59,983 INFO   Score=-0.2385 | bucket=hot | fare=5.53, miles=4.62, speed=48.71, duration=4.82
+2026-11-19 05:54:59,983 INFO   Score=-0.2381 | bucket=hot | fare=5.53, miles=4.62, speed=50.92, duration=4.78
+2026-11-19 05:54:59,984 INFO   Score=-0.2379 | bucket=hot | fare=5.53, miles=4.48, speed=48.13, duration=4.70
+2026-11-19 05:54:59,984 INFO   Score=-0.2373 | bucket=hot | fare=5.53, miles=4.62, speed=45.75, duration=4.88
+2026-11-19 05:54:59,984 INFO   Score=-0.2372 | bucket=hot | fare=5.53, miles=4.46, speed=50.78, duration=4.63
+2026-11-19 05:55:00,375 INFO Anomaly rate per bucket:
+2026-11-19 05:55:00,375 INFO   cold: 0.12%
+2026-11-19 05:55:00,375 INFO   hot: 0.36%
+2026-11-19 05:55:00,375 INFO   warm: 0.08%
+2026-11-19 05:55:00,375 INFO Quick validation complete.
+2026-11-19 05:55:01,228 INFO Closing down clientserver connection

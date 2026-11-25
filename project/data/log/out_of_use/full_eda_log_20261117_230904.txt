@@ -1,0 +1,254 @@
+[Field: License Number (hvfhs_license_num)]
+  Type: string
+  Total Count: 471960468
+  Null Count: 0
+  Distinct Values (approx): 2
+  Top 20 Values:
+    HV0003: 346253128 (73.36%)
+    HV0005: 125707340 (26.64%)
+
+[Field: Base Number (dispatching_base_num)]
+  Type: string
+  Total Count: 471960468
+  Null Count: 0
+  Distinct Values (approx): 45
+  Top 20 Values:
+    B03404: 346229800 (73.36%)
+    B03406: 125707340 (26.64%)
+    B02764: 6332 (0.00%)
+    B02870: 2273 (0.00%)
+    B02882: 1900 (0.00%)
+    B02872: 1641 (0.00%)
+    B02871: 1517 (0.00%)
+    B02889: 1418 (0.00%)
+    B02835: 1315 (0.00%)
+    B02887: 1223 (0.00%)
+    B02765: 1157 (0.00%)
+    B02869: 1148 (0.00%)
+    B02884: 495 (0.00%)
+    B02864: 487 (0.00%)
+    B03493: 418 (0.00%)
+    B02877: 306 (0.00%)
+    B02876: 272 (0.00%)
+    B02879: 262 (0.00%)
+    B03523: 217 (0.00%)
+    B03411: 154 (0.00%)
+
+[Field: Originating Base (originating_base_num)]
+  Type: string
+  Total Count: 471960468
+  Null Count: 125456113
+  Distinct Values (approx): 53
+  Top 20 Values:
+    B03404: 346165563 (73.35%)
+    NULL: 125456113 (26.58%)
+    B03406: 312853 (0.07%)
+    B02764: 6332 (0.00%)
+    B02870: 2273 (0.00%)
+    B02882: 1900 (0.00%)
+    B02872: 1641 (0.00%)
+    B02871: 1517 (0.00%)
+    B03153: 1502 (0.00%)
+    B02889: 1418 (0.00%)
+    B02835: 1315 (0.00%)
+    B02887: 1223 (0.00%)
+    B02765: 1157 (0.00%)
+    B02869: 1148 (0.00%)
+    B02026: 828 (0.00%)
+    B02884: 495 (0.00%)
+    B02864: 487 (0.00%)
+    B03493: 418 (0.00%)
+    B02877: 306 (0.00%)
+    B02876: 272 (0.00%)
+
+[Field: Request Time (request_datetime)]
+  Type: TimestampNTZType()
+  (No detailed stats implemented for this type)
+
+[Field: On-Scene Time (on_scene_datetime)]
+  Type: TimestampNTZType()
+  (No detailed stats implemented for this type)
+
+[Field: Pickup Time (pickup_datetime)]
+  Type: TimestampNTZType()
+  (No detailed stats implemented for this type)
+
+[Field: Dropoff Time (dropoff_datetime)]
+  Type: TimestampNTZType()
+  (No detailed stats implemented for this type)
+
+[Field: Pickup Location ID (PULocationID)]
+  Type: numeric
+  Count: 471960468
+  Null Count: 0
+  Mean: 138.6851
+  StdDev: 74.7723
+  Min: 1.0000
+  Max: 265.0000
+  Percentiles: P50=140.0000, P90=241.0000, P95=254.0000, P99=265.0000
+
+[Field: Dropoff Location ID (DOLocationID)]
+  Type: numeric
+  Count: 471960468
+  Null Count: 0
+  Mean: 142.2297
+  StdDev: 77.8065
+  Min: 1.0000
+  Max: 265.0000
+  Percentiles: P50=141.0000, P90=248.0000, P95=261.0000, P99=265.0000
+
+[Field: Trip Miles (trip_miles)]
+  Type: numeric
+  Count: 471960468
+  Null Count: 0
+  Mean: 5.0718
+  StdDev: 5.8971
+  Min: 0.0000
+  Max: 568.4300
+  Percentiles: P50=3.0000, P90=11.5000, P95=16.2900, P99=568.4300
+
+[Field: Trip Time (seconds) (trip_time)]
+  Type: numeric
+  Count: 471960468
+  Null Count: 0
+  Mean: 1199.6957
+  StdDev: 863.8184
+  Min: 0.0000
+  Max: 94853.0000
+  Percentiles: P50=967.0000, P90=2270.0000, P95=2807.0000, P99=94853.0000
+
+[Field: Base Fare (base_passenger_fare)]
+  Type: numeric
+  Count: 471960468
+  Null Count: 0
+  Mean: 25.4192
+  StdDev: 22.0714
+  Min: -176.4000
+  Max: 3507.1100
+  Percentiles: P50=18.9300, P90=47.6700, P95=63.9600, P99=3507.1100
+
+[Field: Tolls (tolls)]
+  Type: numeric
+  Count: 471960468
+  Null Count: 0
+  Mean: 1.1550
+  StdDev: 3.9804
+  Min: 0.0000
+  Max: 236.8100
+  Percentiles: P50=0.0000, P90=4.6900, P95=6.9400, P99=236.8100
+
+[Field: BCF (bcf)]
+  Type: numeric
+  Count: 471960468
+  Null Count: 0
+  Mean: 0.7437
+  StdDev: 0.6787
+  Min: 0.0000
+  Max: 213.0200
+  Percentiles: P50=0.5400, P90=1.4500, P95=1.9500, P99=213.0200
+
+[Field: Sales Tax (sales_tax)]
+  Type: numeric
+  Count: 471960468
+  Null Count: 0
+  Mean: 2.1360
+  StdDev: 1.8079
+  Min: 0.0000
+  Max: 471.5200
+  Percentiles: P50=1.6000, P90=4.1800, P95=5.4700, P99=471.5200
+
+[Field: Congestion Surcharge (congestion_surcharge)]
+  Type: numeric
+  Count: 471960468
+  Null Count: 0
+  Mean: 1.0665
+  StdDev: 1.3351
+  Min: 0.0000
+  Max: 11.0000
+  Percentiles: P50=0.0000, P90=2.7500, P95=2.7500, P99=11.0000
+
+[Field: Airport Fee (airport_fee)]
+  Type: numeric
+  Count: 471960468
+  Null Count: 0
+  Mean: 0.2099
+  StdDev: 0.6963
+  Min: 0.0000
+  Max: 10.0000
+  Percentiles: P50=0.0000, P90=0.0000, P95=2.5000, P99=10.0000
+
+[Field: Tips (tips)]
+  Type: numeric
+  Count: 471960468
+  Null Count: 0
+  Mean: 1.1582
+  StdDev: 3.3787
+  Min: 0.0000
+  Max: 361.6000
+  Percentiles: P50=0.0000, P90=4.1900, P95=6.7500, P99=361.6000
+
+[Field: Driver Pay (driver_pay)]
+  Type: numeric
+  Count: 471960468
+  Null Count: 0
+  Mean: 19.8313
+  StdDev: 16.9209
+  Min: -107.3500
+  Max: 4334.8900
+  Percentiles: P50=14.7400, P90=38.9300, P95=50.6100, P99=4334.8900
+
+[Field: Shared Request Flag (shared_request_flag)]
+  Type: string
+  Total Count: 471960468
+  Null Count: 0
+  Distinct Values (approx): 2
+  Top 20 Values:
+    N: 457035537 (96.84%)
+    Y: 14924931 (3.16%)
+
+[Field: Shared Match Flag (shared_match_flag)]
+  Type: string
+  Total Count: 471960468
+  Null Count: 0
+  Distinct Values (approx): 2
+  Top 20 Values:
+    N: 466169422 (98.77%)
+    Y: 5791046 (1.23%)
+
+[Field: Access-a-Ride Flag (access_a_ride_flag)]
+  Type: string
+  Total Count: 471960468
+  Null Count: 0
+  Distinct Values (approx): 3
+  Top 20 Values:
+    N: 336777217 (71.36%)
+     : 134931167 (28.59%)
+    Y: 252084 (0.05%)
+
+[Field: WAV Request Flag (wav_request_flag)]
+  Type: string
+  Total Count: 471960468
+  Null Count: 0
+  Distinct Values (approx): 2
+  Top 20 Values:
+    N: 470848323 (99.76%)
+    Y: 1112145 (0.24%)
+
+[Field: WAV Match Flag (wav_match_flag)]
+  Type: string
+  Total Count: 471960468
+  Null Count: 0
+  Distinct Values (approx): 2
+  Top 20 Values:
+    N: 431593127 (91.45%)
+    Y: 40367341 (8.55%)
+
+[Field: Wait Time (minutes) (wait_minutes)]
+  Type: numeric
+  Count: 471960468
+  Null Count: 0
+  Mean: 4.5929
+  StdDev: 3.4075
+  Min: -1373.8833
+  Max: 1784.9333
+  Percentiles: P50=4.0000, P90=8.1167, P95=10.0333, P99=1784.9333

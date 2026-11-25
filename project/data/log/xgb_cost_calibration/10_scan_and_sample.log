@@ -1,0 +1,8 @@
+[19:10:56] master=local[*] cores=120
+[19:10:56] cleaned partitions: 24 under D:\CS5488project_Group101\project\data\output\cleaned
+[19:11:00] warmup 4.0 s, 18,479,031 rows
+[19:11:03] two months 3.7 s, 36,406,664 rows
+[19:11:07] all months 3.8 s, 471,716,787 rows
+[19:11:44] sample write 36.5 s, 23,590,754 rows, 1.36 GB, 139 files
+[19:11:45] sample zero-tip share 0.8048
+[19:11:47] metrics -> D:\CS5488project_Group101\project\data\output\xgb_cost_calibration\metrics\scan_and_sample.json

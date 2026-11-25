@@ -1,0 +1,17 @@
+cluster             0        1  abs_diff  rel_diff_pct
+feature                                               
+day_cos       0.07407  0.07024   0.00383          5.31
+day_sin       0.10177  0.12536   0.02359         20.77
+hour_cos      0.13044  0.20259   0.07215         43.33
+hour_sin      0.11241  0.10671   0.00570          5.20
+log_duration  0.89240  0.58279   0.30961         41.98
+log_fare      1.35893  1.33645   0.02248          1.67
+log_miles     0.95347  0.90477   0.04870          5.24
+log_tips      1.84100  1.91169   0.07069          3.77
+speed_mph     1.43318  1.46739   0.03421          2.36
+
+top3_rel_diff_range_pct: 1.67..3.77
+spearman_rank_correlation: 0.9833
+verdict: INDISTINGUISHABLE
+
+Interpretation: both clusters are separated in FEATURE SPACE (KMeans), but share the same SHAP driver ranking, because SHAP here explains the IsolationForest anomaly score, not the cluster assignment. Cluster-level differences live in log_duration (+42%) and hour_cos (+43%), not in the top-3 magnitude drivers.

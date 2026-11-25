@@ -1,0 +1,25 @@
+Loaded 13577 anomaly records from: D:\CS5488project_Group101\project\data\output\if_results_10pct_of_10pct\strict_anomalies
+26/11/19 05:56:26 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
+netlib-blas: JNI_OnLoad: dlopen(libopenblas.dll) failed: LoadLibrary failed
+K=2: WSSSE=98238.52, silhouette=0.3662
+K=3: WSSSE=83679.80, silhouette=0.3088
+K=4: WSSSE=76354.97, silhouette=0.2713
+K=5: WSSSE=70501.11, silhouette=0.2662
+K=6: WSSSE=66266.64, silhouette=0.2523
+K=7: WSSSE=61441.17, silhouette=0.2768
+K=8: WSSSE=58854.85, silhouette=0.2616
+
+Best K = 2 (silhouette = 0.3662)
+
+Cluster sizes:
+ cluster  count  ratio
+       0   9791 0.7211
+       1   3786 0.2789
+
+Cluster centers (standardized scale):
+ cluster  log_miles  log_fare  log_tips  speed_mph  log_duration  hour_sin  hour_cos  day_sin  day_cos
+       0    -0.4699   -0.3883    0.3877    -0.2460       -0.3068   -0.0409   -0.0053    0.036  -0.0490
+       1     1.2152    1.0043   -1.0028     0.6361        0.7934    0.1058    0.0137   -0.093   0.1267
+
+Clustered anomalies saved to: D:\CS5488project_Group101\project\data\output\kmeans_anomaly_clusters\strict_anomalies_clustered
+Spark session stopped.

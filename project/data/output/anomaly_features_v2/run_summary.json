@@ -1,0 +1,14 @@
+{
+  "rows": 13577,
+  "duration_unit": "MINUTES",
+  "speed_unit": "physical mph",
+  "max_speed_mismatch": 5.684341886080802e-14,
+  "speed_check_passed": true,
+  "label_column": "cluster_robust_name",
+  "label_rule": "cluster names only; numeric ids are context, never quoted",
+  "cluster_name_map": {
+    "0": "long_low_tip",
+    "1": "short_high_tip"
+  },
+  "supersedes": "add_consistency_features.py (v1, unit-broken)"
+}

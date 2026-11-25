@@ -1,0 +1,19 @@
+[grid] k2 cores=8 shuffle=30 calls=5 (warmup=1, measured=4)
+WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/11/25 18:17:43 WARN SparkConf: Note that spark.local.dir will be overridden by the value set by the cluster manager (via SPARK_LOCAL_DIRS in standalone/kubernetes and LOCAL_DIRS in YARN).
+[data] rows=2000000 input_partitions=16 prep_s=8.2 baseline_cpu=4.5%
+netlib-blas: JNI_OnLoad: dlopen(libopenblas.dll) failed: LoadLibrary failed
+[run] k2 c=8 s=30 idx=0 warmup=True fit_s=77.47 cpu=15.9% eff=0.40 wssse=9404845.7
+[run] k2 c=8 s=30 idx=1 warmup=False fit_s=90.85 cpu=15.5% eff=0.39 wssse=9404845.7
+[run] k2 c=8 s=30 idx=2 warmup=False fit_s=124.75 cpu=16.9% eff=0.42 wssse=9404845.7
+[run] k2 c=8 s=30 idx=3 warmup=False fit_s=116.31 cpu=16.6% eff=0.42 wssse=9404845.7
+[run] k2 c=8 s=30 idx=4 warmup=False fit_s=100.56 cpu=17.9% eff=0.45 wssse=9404845.7
+[done] wrote D:\CS5488project_Group101\project\data\output\scaling_study\replication\k2_s30_c8\s2_k2.csv and D:\CS5488project_Group101\project\data\output\scaling_study\replication\k2_s30_c8\s2_k2_summary.csv
+job  baseline_core  n_cores  shuffle_partitions  n_rows  n_runs  fit_s_median  fit_s_min  fit_s_max  fit_s_mad  speedup_vs_baseline  efficiency  parallel_eff_median  parallel_eff_net_median  input_partitions  amdahl_a  amdahl_b  amdahl_alpha  amdahl_r2  amdahl_alpha_with_local1  amdahl_r2_with_local1
+ k2              2        8                  30 2000000       4       108.435     90.849    124.752     12.097                  NaN         NaN                 0.42                    0.308                16       NaN       NaN           NaN        NaN                       NaN                    NaN
+SUCCESS: The process with PID 43244 (child process of PID 27324) has been terminated.
+SUCCESS: The process with PID 27324 (child process of PID 3804) has been terminated.
+SUCCESS: The process with PID 3804 (child process of PID 41876) has been terminated.

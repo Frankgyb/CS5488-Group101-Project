@@ -1,0 +1,222 @@
+{
+  "old": {
+    "30|2": {
+      "n": 2,
+      "slope_s_per_run": -41.227,
+      "first2_mean_s": 200.5195,
+      "last2_mean_s": 200.5195,
+      "delta_pct": 0.0,
+      "flag_gt_20pct": false,
+      "run_order": [
+        1,
+        2
+      ],
+      "fit_s": [
+        221.133,
+        179.906
+      ]
+    },
+    "30|4": {
+      "n": 2,
+      "slope_s_per_run": 25.388,
+      "first2_mean_s": 119.904,
+      "last2_mean_s": 119.904,
+      "delta_pct": 0.0,
+      "flag_gt_20pct": false,
+      "run_order": [
+        1,
+        2
+      ],
+      "fit_s": [
+        107.21,
+        132.598
+      ]
+    },
+    "30|8": {
+      "n": 2,
+      "slope_s_per_run": -4.47,
+      "first2_mean_s": 91.357,
+      "last2_mean_s": 91.357,
+      "delta_pct": 0.0,
+      "flag_gt_20pct": false,
+      "run_order": [
+        1,
+        2
+      ],
+      "fit_s": [
+        93.592,
+        89.122
+      ]
+    },
+    "120|2": {
+      "n": 2,
+      "slope_s_per_run": 1.266,
+      "first2_mean_s": 167.956,
+      "last2_mean_s": 167.956,
+      "delta_pct": 0.0,
+      "flag_gt_20pct": false,
+      "run_order": [
+        1,
+        2
+      ],
+      "fit_s": [
+        167.323,
+        168.589
+      ]
+    },
+    "120|4": {
+      "n": 2,
+      "slope_s_per_run": -3.958,
+      "first2_mean_s": 129.907,
+      "last2_mean_s": 129.907,
+      "delta_pct": 0.0,
+      "flag_gt_20pct": false,
+      "run_order": [
+        1,
+        2
+      ],
+      "fit_s": [
+        131.886,
+        127.928
+      ]
+    },
+    "120|8": {
+      "n": 2,
+      "slope_s_per_run": -2.01,
+      "first2_mean_s": 74.609,
+      "last2_mean_s": 74.609,
+      "delta_pct": 0.0,
+      "flag_gt_20pct": false,
+      "run_order": [
+        1,
+        2
+      ],
+      "fit_s": [
+        75.614,
+        73.604
+      ]
+    }
+  },
+  "new": {
+    "30|2": {
+      "n": 4,
+      "slope_s_per_run": 11.0236,
+      "first2_mean_s": 176.4265,
+      "last2_mean_s": 193.1015,
+      "delta_pct": 9.45,
+      "flag_gt_20pct": false,
+      "run_order": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "fit_s": [
+        180.182,
+        172.671,
+        167.578,
+        218.625
+      ]
+    },
+    "30|4": {
+      "n": 4,
+      "slope_s_per_run": 5.9741,
+      "first2_mean_s": 135.1175,
+      "last2_mean_s": 146.779,
+      "delta_pct": 8.63,
+      "flag_gt_20pct": false,
+      "run_order": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "fit_s": [
+        116.358,
+        153.877,
+        158.991,
+        134.567
+      ]
+    },
+    "30|8": {
+      "n": 4,
+      "slope_s_per_run": 14.949,
+      "first2_mean_s": 96.242,
+      "last2_mean_s": 121.012,
+      "delta_pct": 25.74,
+      "flag_gt_20pct": true,
+      "run_order": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "fit_s": [
+        93.818,
+        98.666,
+        98.231,
+        143.793
+      ]
+    },
+    "120|2": {
+      "n": 4,
+      "slope_s_per_run": -3.8181,
+      "first2_mean_s": 208.2395,
+      "last2_mean_s": 192.06,
+      "delta_pct": -7.77,
+      "flag_gt_20pct": false,
+      "run_order": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "fit_s": [
+        191.91,
+        224.569,
+        195.121,
+        188.999
+      ]
+    },
+    "120|4": {
+      "n": 4,
+      "slope_s_per_run": 6.0179,
+      "first2_mean_s": 180.759,
+      "last2_mean_s": 192.4045,
+      "delta_pct": 6.44,
+      "flag_gt_20pct": false,
+      "run_order": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "fit_s": [
+        174.294,
+        187.224,
+        192.071,
+        192.738
+      ]
+    },
+    "120|8": {
+      "n": 4,
+      "slope_s_per_run": -0.8494,
+      "first2_mean_s": 102.997,
+      "last2_mean_s": 99.812,
+      "delta_pct": -3.09,
+      "flag_gt_20pct": false,
+      "run_order": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "fit_s": [
+        102.699,
+        103.295,
+        97.987,
+        101.637
+      ]
+    }
+  }
+}

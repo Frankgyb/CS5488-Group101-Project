@@ -1,0 +1,35 @@
+2026-11-22 00:50:53,640 INFO Spark session started.
+2026-11-22 00:50:53,640 INFO Reading D:\CS5488project_Group101\project\data\output\sampled_km ...
+2026-11-22 00:50:58,949 INFO Buckets: ['cold', 'warm', 'hot']
+2026-11-22 00:51:08,091 INFO Sampled slice: 4,672,734 rows (10% of sampled_km).
+2026-11-22 00:51:11,987 INFO row_uid distinct count: 4,672,734 / 4,672,734
+2026-11-22 00:51:11,987 INFO Collecting to pandas ...
+2026-11-22 00:51:25,790 INFO Collected 4,672,734 rows.
+2026-11-22 00:51:27,713 INFO Training IsolationForest (n_estimators=150, max_samples=512, n_jobs=4) ...
+2026-11-22 00:51:33,355 INFO fit done in 5.6s
+2026-11-22 00:51:53,360 INFO IQR fallback: threshold=-0.1664, anomaly ratio=0.29%
+2026-11-22 00:51:53,809 INFO Anomalies: 13,577 (0.291%)
+2026-11-22 00:51:53,810 INFO REGRESSION CHECK vs original 02 run (13,577): MATCH
+2026-11-22 00:52:35,685 INFO Saved score tables to D:\CS5488project_Group101\project\data\output\if_results_rowkeyed
+2026-11-22 00:52:35,685 INFO Computing SHAP for 2000 anomalies ...
+2026-11-22 00:52:47,534 INFO Saved D:\CS5488project_Group101\project\data\output\if_results_rowkeyed\shap_rowkeyed.csv  (2,000 rows x 22 cols)
+2026-11-22 00:52:47,535 INFO === run_meta ===
+2026-11-22 00:52:47,535 INFO   script: 02b_isolation_forest_shap_rowkeyed.py
+2026-11-22 00:52:47,536 INFO   input: D:\CS5488project_Group101\project\data\output\sampled_km
+2026-11-22 00:52:47,536 INFO   output_base: D:\CS5488project_Group101\project\data\output\if_results_rowkeyed
+2026-11-22 00:52:47,536 INFO   seed: 42
+2026-11-22 00:52:47,536 INFO   frac: 0.1
+2026-11-22 00:52:47,536 INFO   sampled_rows: 4672734
+2026-11-22 00:52:47,536 INFO   anomalies: 13577
+2026-11-22 00:52:47,536 INFO   expected_anomalies_from_02: 13577
+2026-11-22 00:52:47,536 INFO   anomaly_count_matches_02: True
+2026-11-22 00:52:47,536 INFO   threshold: -0.16640210880045198
+2026-11-22 00:52:47,537 INFO   threshold_method: iqr
+2026-11-22 00:52:47,537 INFO   shap_samples: 2000
+2026-11-22 00:52:47,537 INFO   shap_rows_equal_sample: True
+2026-11-22 00:52:47,537 INFO   row_uid_unique: True
+2026-11-22 00:52:47,537 INFO   feature_cols: ['log_miles', 'log_fare', 'log_tips', 'speed_mph', 'log_duration', 'hour_sin', 'hour_cos', 'day_sin', 'day_cos']
+2026-11-22 00:52:47,537 INFO   iforest_params: {'n_estimators': 150, 'max_samples': 512, 'max_features': 0.8, 'n_jobs': 4, 'random_state': 42}
+2026-11-22 00:52:47,537 INFO   note: row_uid joins 07b_shap_cluster_analysis_rowkeyed.py to cluster labels
+2026-11-22 00:52:47,965 INFO Done.
+2026-11-22 00:52:48,555 INFO Closing down clientserver connection

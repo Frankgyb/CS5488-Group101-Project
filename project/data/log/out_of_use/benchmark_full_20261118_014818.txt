@@ -1,0 +1,9 @@
+=================================================================
+Full Benchmark started at 2026-11-18 01:48:18.774960
+Cleaned data root: D:\CS5488project_Group101\project\data\output\cleaned
+Hardware: i7-12700H, 32GB RAM, SSD (assumed)
+=================================================================
+
+--- A: Partition Size (local[4]) ---
+Partition 32m:
+Discovered 24 partitions (year/month).

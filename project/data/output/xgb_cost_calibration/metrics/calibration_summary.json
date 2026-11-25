@@ -1,0 +1,134 @@
+{
+  "stage": "calibration_summary",
+  "env": {
+    "timestamp": "2026-11-25T19:28:41+08:00",
+    "python": "3.14.6",
+    "executable": "D:\\Anaconda\\python.exe",
+    "platform": "Windows-11-10.0.22621-SP0",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+    "cpu_count": 20,
+    "argv": [
+      "project/code/ml/experiments/xgb_cost_calibration/run_calibration.py",
+      "--steps",
+      ""
+    ],
+    "project_root": "D:\\CS5488project_Group101\\project",
+    "pyspark": "4.2.1",
+    "xgboost": "3.4.1",
+    "numpy": "2.4.6",
+    "pyarrow": "23.0.1"
+  },
+  "feature_pass": {
+    "all_months_s": 3.8,
+    "all_months_rows": 471716787,
+    "two_months_s": 3.7,
+    "sample_write_s": 36.5,
+    "sample_rows": 23590754,
+    "sample_gb": 1.36,
+    "sample_zero_tip_share": 0.8048
+  },
+  "driver_xgb": {
+    "n_rows": 23590754,
+    "matrix_gb": 2.45,
+    "dmatrix_build_s": 13.9,
+    "depth6": {
+      "rounds": 40,
+      "train_s": 47.2,
+      "s_per_round": 1.179,
+      "valid_rmse": 0.09405602514743805,
+      "nthread": 20
+    },
+    "depth8": {
+      "rounds": 15,
+      "train_s": 19.5,
+      "s_per_round": 1.3,
+      "nthread": 20
+    },
+    "thread_scaling": {
+      "rows": 5000000,
+      "rounds": 10,
+      "by_threads": {
+        "4": {
+          "rounds": 10,
+          "train_s": 2.76,
+          "s_per_round": 0.276
+        },
+        "8": {
+          "rounds": 10,
+          "train_s": 2.17,
+          "s_per_round": 0.217
+        },
+        "20": {
+          "rounds": 10,
+          "train_s": 1.78,
+          "s_per_round": 0.178
+        }
+      },
+      "speedup_vs_min_threads": 1.55
+    }
+  },
+  "jvm_spark_ml": {
+    "n_rows": 2000000,
+    "read_assemble_s": 19.6,
+    "gbt": {
+      "max_iter": 5,
+      "max_depth": 4,
+      "fit_s": 37.1,
+      "s_per_iter": 7.42
+    },
+    "rf": {
+      "num_trees": 10,
+      "max_depth": 5,
+      "fit_s": 34.7,
+      "s_per_tree": 3.47
+    }
+  },
+  "distributed_xgb": {
+    "rows_target": 2000000,
+    "rounds": 10,
+    "runs": [
+      {
+        "label": "local[8]/workers=4/rows=2000000",
+        "status": "ok",
+        "n_rows": 1999690,
+        "fit_s": 27.8,
+        "s_per_round": 2.779
+      },
+      {
+        "label": "local[8]/workers=8/rows=2000000",
+        "status": "ok",
+        "n_rows": 1999690,
+        "fit_s": 29.5,
+        "s_per_round": 2.949
+      }
+    ],
+    "speedup_best_vs_slowest": 1.061
+  },
+  "python_worker": {
+    "verdict": {
+      "worker_blocked_without_env": true,
+      "worker_ok_with_env": true,
+      "distributed_xgb_available": true,
+      "root_cause": "python interpreter resolution: without PYSPARK_PYTHON, Spark launches workers with `python3`, which is not an executable here (returncode 9009)",
+      "daemon_import_failure_is_harmless": true
+    },
+    "resolver": {
+      "python3": {
+        "python": null,
+        "pyspark": null,
+        "returncode": 9009
+      },
+      "python": {
+        "python": "3.14.6",
+        "pyspark": "4.2.1",
+        "returncode": 0
+      }
+    },
+    "daemon_import_error": [
+      "ImportError: cannot import name 'SIGHUP' from 'signal' (D:\\Anaconda\\Lib\\signal.py)"
+    ]
+  },
+  "steps": {},
+  "note": "Single-run calibration, not a controlled benchmark: per timing_provenance.md, identical configurations can differ by 26-42 %, so these numbers price the work and must not be quoted as deliverable results."
+}

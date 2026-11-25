@@ -1,0 +1,19 @@
+2026-11-19 01:27:50,293 INFO Spark session started (used only for distributed loading & sampling).
+2026-11-19 01:27:50,293 INFO [PARALLEL] Reading 10% sample parquet with Spark (multiple partitions)...
+2026-11-19 01:27:51,464 INFO [PARALLEL] Performing stratified sampling per bucket (distributed sampleBy)...
+2026-11-19 01:27:56,591 INFO Sampled 2% of 10% sample => 934,611 rows (distributed sampling done).
+2026-11-19 01:27:56,591 INFO Collecting raw features to driver (safe for <1M rows)...
+2026-11-19 01:27:57,911 INFO Collected 934,611 rows into pandas DataFrame.
+2026-11-19 01:27:57,911 INFO [PARALLEL] StandardScaler using sklearn (vectorized, multi-threaded BLAS)...
+2026-11-19 01:27:58,058 INFO Feature scaling completed.
+2026-11-19 01:27:58,083 INFO [PARALLEL] Training IsolationForest (n_jobs=-1, multi-process)...
+2026-11-19 01:28:07,117 INFO Training completed (parallel tree construction).
+2026-11-19 01:28:07,117 INFO [PARALLEL] Scoring all samples (parallel_backend threading)...
+2026-11-19 01:28:09,042 INFO Strict anomalies (score < -0.45): 0
+2026-11-19 01:28:09,477 INFO Results saved to D:\CS5488project_Group101\project\data\output\if_results_2pct_precision
+2026-11-19 01:28:09,478 INFO No anomalies found; SHAP skipped.
+2026-11-19 01:28:09,478 INFO Total 2% samples: 934,611
+2026-11-19 01:28:09,478 INFO Strict anomalies selected: 0
+2026-11-19 01:28:09,478 INFO Anomaly ratio: 0.000%
+2026-11-19 01:28:09,478 INFO Script finished successfully.
+2026-11-19 01:28:09,669 INFO Closing down clientserver connection

@@ -1,0 +1,23 @@
+=======================================================
+Demo Benchmark started at 2026-11-18 01:45:02.471147
+Data: one month (2023-01), path: D:\CS5488project_Group101\project\data\output\cleaned\pickup_year=2023\pickup_month=1
+Hardware: i7-12700H, 32GB RAM, SSD (assumed)
+=======================================================
+
+--- A: Partition Size (local[4]) ---
+  Partition 32m: 3.60s
+  Partition 128m: 0.38s
+  Partition 512m: 0.33s
+
+--- B: Core Scaling (128MB partition) ---
+  Cores=1: 0.39s
+  Cores=2: 0.32s
+  Cores=4: 0.31s
+
+--- C: Column Pruning (local[4], 128MB) ---
+  All columns: 0.26s
+  Only wait_minutes: 0.28s
+  Speedup: 0.91x
+
+=======================================================
+Demo finished at 2026-11-18 01:45:16.227113, log saved to D:\CS5488project_Group101\project\data\log\benchmark_demo_20261118_014502.txt

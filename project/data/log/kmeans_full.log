@@ -1,0 +1,12 @@
+2026-11-18 19:44:19,110 - INFO - Loading full sampled_km data...
+2026-11-18 19:44:22,670 - INFO - Full data count: 46,706,095
+2026-11-18 19:44:22,670 - INFO - Assembling features and standardizing...
+2026-11-18 19:44:41,583 - INFO - Training BisectingKMeans with K=8...
+2026-11-18 20:21:19,853 - INFO - 
+===== Full Data Clustering Result =====
+2026-11-18 20:21:19,854 - INFO - K=8
+2026-11-18 20:21:19,854 - INFO - Silhouette Score: 0.2131
+2026-11-18 20:21:19,854 - INFO - WSSSE (Cost): 219653376.56
+2026-11-18 20:21:40,641 - INFO - Clustering results saved to D:\CS5488project_Group101\project\data\output\kmeans_full_result
+2026-11-18 20:21:40,641 - INFO - Done. Spark session will stop.
+2026-11-18 20:21:41,124 - INFO - Closing down clientserver connection

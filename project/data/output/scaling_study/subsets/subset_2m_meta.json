@@ -1,0 +1,10 @@
+{
+  "kind": "pandas_full",
+  "source": "D:\\CS5488project_Group101\\project\\data\\output\\sampled_km",
+  "out": "D:\\CS5488project_Group101\\project\\data\\output\\scaling_study\\subsets\\subset_2m",
+  "rows": 2000000,
+  "partitions": 16,
+  "input_parts": 16,
+  "seed": 42,
+  "created_at": "2026-11-25T16:15:50+08:00"
+}

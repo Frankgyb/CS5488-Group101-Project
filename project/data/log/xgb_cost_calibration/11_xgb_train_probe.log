@@ -1,0 +1,8 @@
+[19:13:12] loaded 23,590,754 rows x 26 features in 10.1 s (2.45 GB float32)
+[19:13:26] QuantileDMatrix built in 13.9 s
+[19:14:13] depth6: 40 rounds in 47.2 s (1.179 s/round), valid RMSE 0.0941
+[19:14:33] depth8: 15 rounds in 19.5 s (1.300 s/round)
+[19:14:38] nthread=4: 10 rounds on 5,000,000 rows in 2.76 s (0.276 s/round)
+[19:14:40] nthread=8: 10 rounds on 5,000,000 rows in 2.17 s (0.217 s/round)
+[19:14:42] nthread=20: 10 rounds on 5,000,000 rows in 1.78 s (0.178 s/round)
+[19:14:42] metrics -> D:\CS5488project_Group101\project\data\output\xgb_cost_calibration\metrics\xgb_train_probe.json

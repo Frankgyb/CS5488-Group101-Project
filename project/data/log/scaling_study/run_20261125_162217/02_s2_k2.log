@@ -1,0 +1,59 @@
+[grid] k2 cores=4 shuffle=120 calls=5 (warmup=1, measured=4)
+WARNING: Using incubator modules: jdk.incubator.vector
+Using Spark's default log4j profile: org/apache/spark/log4j2-defaults.properties
+Setting default log level to "WARN".
+To adjust logging level use sc.setLogLevel(newLevel). For SparkR, use setLogLevel(newLevel).
+26/11/25 16:22:33 WARN SparkConf: Note that spark.local.dir will be overridden by the value set by the cluster manager (via SPARK_LOCAL_DIRS in standalone/kubernetes and LOCAL_DIRS in YARN).
+[data] rows=2000000 input_partitions=16 prep_s=8.5 baseline_cpu=5.0%
+netlib-blas: JNI_OnLoad: dlopen(libopenblas.dll) failed: LoadLibrary failed
+[run] k2 c=4 s=120 idx=0 warmup=True fit_s=134.81 cpu=5.8% eff=0.29 wssse=9404845.7
+[run] k2 c=4 s=120 idx=1 warmup=False fit_s=174.29 cpu=6.9% eff=0.35 wssse=9404845.7
+[run] k2 c=4 s=120 idx=2 warmup=False fit_s=187.22 cpu=13.2% eff=0.66 wssse=9404845.7
+[run] k2 c=4 s=120 idx=3 warmup=False fit_s=192.07 cpu=13.8% eff=0.69 wssse=9404845.7
+[run] k2 c=4 s=120 idx=4 warmup=False fit_s=192.74 cpu=14.9% eff=0.75 wssse=9404845.7
+[grid] k2 cores=2 shuffle=120 calls=5 (warmup=1, measured=4)
+[data] rows=2000000 input_partitions=16 prep_s=6.9 baseline_cpu=4.3%
+[run] k2 c=2 s=120 idx=0 warmup=True fit_s=251.19 cpu=5.6% eff=0.56 wssse=9404845.7
+[run] k2 c=2 s=120 idx=1 warmup=False fit_s=191.91 cpu=4.5% eff=0.45 wssse=9404845.7
+[run] k2 c=2 s=120 idx=2 warmup=False fit_s=224.57 cpu=4.5% eff=0.45 wssse=9404845.7
+[run] k2 c=2 s=120 idx=3 warmup=False fit_s=195.12 cpu=4.6% eff=0.46 wssse=9404845.7
+[run] k2 c=2 s=120 idx=4 warmup=False fit_s=189.00 cpu=4.8% eff=0.48 wssse=9404845.7
+[grid] k2 cores=4 shuffle=30 calls=5 (warmup=1, measured=4)
+[data] rows=2000000 input_partitions=16 prep_s=3.1 baseline_cpu=4.2%
+[run] k2 c=4 s=30 idx=0 warmup=True fit_s=124.65 cpu=5.6% eff=0.28 wssse=9404845.7
+[run] k2 c=4 s=30 idx=1 warmup=False fit_s=116.36 cpu=5.1% eff=0.25 wssse=9404845.7
+[run] k2 c=4 s=30 idx=2 warmup=False fit_s=153.88 cpu=6.0% eff=0.30 wssse=9404845.7
+[run] k2 c=4 s=30 idx=3 warmup=False fit_s=158.99 cpu=5.6% eff=0.28 wssse=9404845.7
+[run] k2 c=4 s=30 idx=4 warmup=False fit_s=134.57 cpu=5.1% eff=0.26 wssse=9404845.7
+[grid] k2 cores=8 shuffle=30 calls=5 (warmup=1, measured=4)
+[data] rows=2000000 input_partitions=16 prep_s=2.9 baseline_cpu=4.6%
+[run] k2 c=8 s=30 idx=0 warmup=True fit_s=96.52 cpu=11.3% eff=0.28 wssse=9404845.7
+[run] k2 c=8 s=30 idx=1 warmup=False fit_s=93.82 cpu=7.3% eff=0.18 wssse=9404845.7
+[run] k2 c=8 s=30 idx=2 warmup=False fit_s=98.67 cpu=6.8% eff=0.17 wssse=9404845.7
+[run] k2 c=8 s=30 idx=3 warmup=False fit_s=98.23 cpu=6.8% eff=0.17 wssse=9404845.7
+[run] k2 c=8 s=30 idx=4 warmup=False fit_s=143.79 cpu=10.2% eff=0.26 wssse=9404845.7
+[grid] k2 cores=2 shuffle=30 calls=5 (warmup=1, measured=4)
+[data] rows=2000000 input_partitions=16 prep_s=5.4 baseline_cpu=4.6%
+[run] k2 c=2 s=30 idx=0 warmup=True fit_s=203.05 cpu=4.7% eff=0.47 wssse=9404845.7
+[run] k2 c=2 s=30 idx=1 warmup=False fit_s=180.18 cpu=4.7% eff=0.47 wssse=9404845.7
+[run] k2 c=2 s=30 idx=2 warmup=False fit_s=172.67 cpu=4.8% eff=0.48 wssse=9404845.7
+[run] k2 c=2 s=30 idx=3 warmup=False fit_s=167.58 cpu=4.7% eff=0.47 wssse=9404845.7
+[run] k2 c=2 s=30 idx=4 warmup=False fit_s=218.63 cpu=4.6% eff=0.46 wssse=9404845.7
+[grid] k2 cores=8 shuffle=120 calls=5 (warmup=1, measured=4)
+[data] rows=2000000 input_partitions=16 prep_s=3.4 baseline_cpu=4.3%
+[run] k2 c=8 s=120 idx=0 warmup=True fit_s=115.97 cpu=14.6% eff=0.36 wssse=9404845.7
+[run] k2 c=8 s=120 idx=1 warmup=False fit_s=102.70 cpu=14.8% eff=0.37 wssse=9404845.7
+[run] k2 c=8 s=120 idx=2 warmup=False fit_s=103.30 cpu=14.4% eff=0.36 wssse=9404845.7
+[run] k2 c=8 s=120 idx=3 warmup=False fit_s=97.99 cpu=14.2% eff=0.35 wssse=9404845.7
+[run] k2 c=8 s=120 idx=4 warmup=False fit_s=101.64 cpu=14.4% eff=0.36 wssse=9404845.7
+[done] wrote D:\CS5488project_Group101\project\data\output\scaling_study\s2_k2.csv and D:\CS5488project_Group101\project\data\output\scaling_study\s2_k2_summary.csv
+job  baseline_core  n_cores  shuffle_partitions  n_rows  n_runs  fit_s_median  fit_s_min  fit_s_max  fit_s_mad  speedup_vs_baseline  efficiency  parallel_eff_median  parallel_eff_net_median  input_partitions  amdahl_a  amdahl_b  amdahl_alpha  amdahl_r2  amdahl_alpha_with_local1  amdahl_r2_with_local1
+ k2              2        2                  30 2000000       4       176.426    167.578    218.625      6.302                1.000       1.000                0.468                    0.006                16    82.346   196.638         0.295      0.918                     0.295                  0.918
+ k2              2        4                  30 2000000       4       144.222    116.358    158.991     12.212                1.223       0.612                0.268                    0.059                16    82.346   196.638         0.295      0.918                     0.295                  0.918
+ k2              2        8                  30 2000000       4        98.448     93.818    143.793      2.424                1.792       0.448                0.177                    0.061                16    82.346   196.638         0.295      0.918                     0.295                  0.918
+ k2              2        2                 120 2000000       4       193.516    188.999    224.569      3.061                1.000       1.000                0.456                    0.029                16   100.234   211.005         0.322      0.608                     0.322                  0.608
+ k2              2        4                 120 2000000       4       189.647    174.294    192.738      2.757                1.020       0.510                0.674                    0.423                16   100.234   211.005         0.322      0.608                     0.322                  0.608
+ k2              2        8                 120 2000000       4       102.168     97.987    103.295      0.829                1.894       0.474                0.361                    0.254                16   100.234   211.005         0.322      0.608                     0.322                  0.608
+SUCCESS: The process with PID 34960 (child process of PID 41700) has been terminated.
+SUCCESS: The process with PID 41700 (child process of PID 31656) has been terminated.
+SUCCESS: The process with PID 31656 (child process of PID 27232) has been terminated.

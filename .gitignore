@@ -1,0 +1,54 @@
+# ---------- OS / editor / tooling ----------
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+.dsh-vision-router/
+
+# ---------- Python ----------
+__pycache__/
+*.py[cod]
+*.egg-info/
+.ipynb_checkpoints/
+.pytest_cache/
+.venv/
+venv/
+
+# ---------- internal working material (not published) ----------
+/handoff/
+/_misc/
+/report_outline.md
+/UPLOAD_TO_GITHUB.md
+/data/
+
+# ---------- course material: keep the brief/templates, not past samples ----------
+/requirement/Past_ProjectSamples/
+
+# ---------- bulk / regenerable data ----------
+/project/data/parquet/
+/project/data/output/cleaned/
+/project/data/output/out_of_use/_outputs/
+/project/data/output/sampled_km/
+/project/data/output/kmeans_full_result/
+/project/data/output/bi_aggregates_compact/
+/project/data/output/if_results_rowkeyed/full_scores_rowkeyed/
+/project/data/output/xgb_cost_calibration/sample5pct/
+/project/data/output/**/_spark_tmp/
+
+# ---------- Hadoop / Spark local artefacts ----------
+*.crc
+
+# ---------- LaTeX build products and drafts ----------
+/report/*.aux
+/report/*.log
+/report/*.out
+/report/*.fls
+/report/*.fdb_latexmk
+/report/*.synctex.gz
+/report/abstract_preview.*
+/report/abs_A.png
+/report/abs_B.png
+/report/abstract_final-01.png
+/report/abstract_new-01.png
+/report/abstract_options.png
+/report/review_*.md

@@ -1,0 +1,4 @@
+dataset,n,fit_s_median,ci95_low,ci95_high,fit_s_min,fit_s_max,fit_s_mad,speedup_vs_primary_local2,speedup_ci95_low,speedup_ci95_high,max_over_median,note
+primary,4,98.448,93.818,143.793,93.818,143.793,2.424,1.792,1.227,2.221,1.461,original n=4; main result
+replication,4,108.435,90.849,124.752,90.849,124.752,12.097,,,,1.15,post-hoc; no contemporaneous local[2] baseline
+pooled_sensitivity,8,99.612,93.818,124.752,90.849,143.793,7.278,1.771,1.414,2.195,1.444,unbalanced: only this cell has n=8

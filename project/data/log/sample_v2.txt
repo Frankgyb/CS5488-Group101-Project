@@ -1,0 +1,40 @@
+Total raw rows (cleaned): 471,960,468
+Rows after validation filters: 467,142,106 (99.0%)
+Rows after feature engineering: 467,067,101
++-----------+------+---------+
+|layer_key  |bucket|count    |
++-----------+------+---------+
+|hot_HV0003 |hot   |256497044|
+|cold_HV0003|cold  |27492968 |
+|warm_HV0003|warm  |59463665 |
+|cold_HV0005|cold  |9964335  |
+|hot_HV0005 |hot   |92435643 |
+|warm_HV0005|warm  |21213446 |
++-----------+------+---------+
+
+Sampled dataset size: 46,706,095 (overall rate: 10.0%)
+Sampled data written to D:\CS5488project_Group101\project\data\output\sampled_km
+
+===== Sampling Quality Report (v2 KMeans) =====
+log_miles: original mean=1.5090, sample mean=1.5090, bias=0.00%
+log_fare: original mean=3.0521, sample mean=3.0521, bias=0.00%
+log_tips: original mean=0.3353, sample mean=0.3353, bias=0.00%
+speed_mph: original mean=13.5929, sample mean=13.5926, bias=0.00%
+log_duration: original mean=2.8417, sample mean=2.8418, bias=0.00%
+hour_sin: original mean=-0.1829, sample mean=-0.1829, bias=0.03%
+hour_cos: original mean=-0.0698, sample mean=-0.0699, bias=0.04%
+day_sin: original mean=-0.0668, sample mean=-0.0671, bias=0.40%
+day_cos: original mean=0.0150, sample mean=0.0147, bias=2.12%
+Layer distribution:
++------+--------+
+|bucket|   count|
++------+--------+
+|  cold| 3746965|
+|  warm| 8066623|
+|   hot|34892507|
++------+--------+
+
+HV0003: original=73.53%, sample=73.53%, diff=0.00%
+HV0005: original=26.47%, sample=26.47%, diff=0.00%
+Long trips (>50mi): original=0.1235%, sample=0.1235%
+Sampling complete.

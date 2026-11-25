@@ -1,0 +1,26 @@
+Loading clustered anomaly data...
+Clustered data shape: (13577, 16)
+Loading SHAP values...
+SHAP data shape: (2000, 9)
+Row count mismatch. Truncating clustered data to 2000 rows.
+Cluster distribution:
+cluster
+0    1445
+1     555
+Name: count, dtype: int64
+
+Saved shap_cluster_summary.csv
+Saved shap_top3_per_cluster.csv
+
+Top-3 features per cluster:
+ cluster   feature  mean_abs_shap  mean_signed_shap
+       0  log_tips         1.9293           -1.9280
+       0  log_fare         1.2784           -1.2784
+       0 speed_mph         1.1043           -1.0991
+       1 speed_mph         1.6172           -1.6170
+       1  log_fare         1.5152           -1.5152
+       1 log_miles         1.0691           -1.0691
+Saved shap_bar_cluster_0.png
+Saved shap_bar_cluster_1.png
+
+Analysis complete. All outputs in: D:\CS5488project_Group101\project\data\output\kmeans_anomaly_clusters

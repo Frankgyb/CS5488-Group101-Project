@@ -1,0 +1,62 @@
+line
+==============================================================================
+KEY-BASED SHAP x CLUSTER ALIGNMENT
+==============================================================================
+"strict_anomalies_rowkeyed : 13,577 rows x 16 cols"
+"shap_rowkeyed.csv         : 2,000 rows x 22 cols"
+"run_meta: anomalies=13,577 (matches 02: True), shap_samples=2,000"
+""
+-- integrity checks --
+row_uid unique in anomalies : True
+row_uid unique in SHAP      : True
+SHAP row_uids missing from anomalies : 0
+"rows compared for feature equality : 2,000"
+max feature mismatch after join : 7.105e-15 (speed_mph)
+=> row_uid join verified: SHAP rows and anomaly rows are the SAME trips.
+""
+-- KMeans K selection (mirrors 03 pipeline) --
+   K=2: WSSSE=102254.68  silhouette=0.2731
+   K=3: WSSSE=83681.87  silhouette=0.3084
+   K=4: WSSSE=75427.03  silhouette=0.3119
+   K=5: WSSSE=71570.17  silhouette=0.2617
+   K=6: WSSSE=63977.54  silhouette=0.2821
+   K=7: WSSSE=61263.27  silhouette=0.2694
+   K=8: WSSSE=58756.87  silhouette=0.2697
+best K = 4 (silhouette 0.3119)
+""
+-- alignment --
+"SHAP rows           : 2,000"
+"rows after join     : 2,000"
+join is 1:1 with no loss => every SHAP value now has its OWN cluster label.
+cluster distribution inside the SHAP sample:
+   cluster 0 (short_high_tip): 261 (13.1%)
+   cluster 1 (long_low_tip): 923 (46.2%)
+   cluster 2 (?): 328 (16.4%)
+   cluster 3 (?): 488 (24.4%)
+""
+-- mean |SHAP| per cluster --
+cluster            name top-3 drivers (mean |SHAP|)                                 
+"      0  short_high_tip log_tips=1.860, speed_mph=1.474, log_fare=1.331             "
+"      1    long_low_tip log_tips=1.899, speed_mph=1.517, log_fare=1.337             "
+"      2                 log_tips=1.940, log_fare=1.393, speed_mph=1.102             "
+"      3                 log_tips=1.785, speed_mph=1.538, log_fare=1.351             "
+""
+-- plots --
+   saved shap_bar_cluster_0.png / shap_beeswarm_cluster_0.png
+   saved shap_bar_cluster_1.png / shap_beeswarm_cluster_1.png
+   saved shap_bar_cluster_2.png / shap_beeswarm_cluster_2.png
+   saved shap_bar_cluster_3.png / shap_beeswarm_cluster_3.png
+""
+saved clustered anomalies -> D:\CS5488project_Group101\project\data\output\kmeans_anomaly_clusters_rowkeyed\strict_anomalies_clustered_rowkeyed
+unlabelled rows after clustering: 0
+""
+"-- comparison with the OLD 07 output (invalid, position-based) --"
+OLD (void):
+"   cluster 0: log_tips, log_fare, speed_mph"
+"   cluster 1: speed_mph, log_fare, log_miles"
+NEW (key-joined):
+"   cluster 0: log_tips, speed_mph, log_fare"
+"   cluster 1: log_tips, speed_mph, log_fare"
+"   cluster 2: log_tips, log_fare, speed_mph"
+"   cluster 3: log_tips, speed_mph, log_fare"
+identical conclusions: False

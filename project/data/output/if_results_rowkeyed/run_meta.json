@@ -1,0 +1,35 @@
+{
+  "script": "02b_isolation_forest_shap_rowkeyed.py",
+  "input": "D:\\CS5488project_Group101\\project\\data\\output\\sampled_km",
+  "output_base": "D:\\CS5488project_Group101\\project\\data\\output\\if_results_rowkeyed",
+  "seed": 42,
+  "frac": 0.1,
+  "sampled_rows": 4672734,
+  "anomalies": 13577,
+  "expected_anomalies_from_02": 13577,
+  "anomaly_count_matches_02": true,
+  "threshold": -0.16640210880045198,
+  "threshold_method": "iqr",
+  "shap_samples": 2000,
+  "shap_rows_equal_sample": true,
+  "row_uid_unique": true,
+  "feature_cols": [
+    "log_miles",
+    "log_fare",
+    "log_tips",
+    "speed_mph",
+    "log_duration",
+    "hour_sin",
+    "hour_cos",
+    "day_sin",
+    "day_cos"
+  ],
+  "iforest_params": {
+    "n_estimators": 150,
+    "max_samples": 512,
+    "max_features": 0.8,
+    "n_jobs": 4,
+    "random_state": 42
+  },
+  "note": "row_uid joins 07b_shap_cluster_analysis_rowkeyed.py to cluster labels"
+}

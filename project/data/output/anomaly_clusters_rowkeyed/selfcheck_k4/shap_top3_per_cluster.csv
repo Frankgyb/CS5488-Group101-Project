@@ -1,0 +1,13 @@
+cluster,cluster_name,feature,n,mean_abs_shap,mean_signed_shap
+0,short_high_tip,log_tips,261,1.859669,-1.859669
+0,short_high_tip,speed_mph,261,1.474322,-1.474322
+0,short_high_tip,log_fare,261,1.331377,-1.331377
+1,long_low_tip,log_tips,923,1.899152,-1.899152
+1,long_low_tip,speed_mph,923,1.517152,-1.517152
+1,long_low_tip,log_fare,923,1.336934,-1.336934
+2,,log_tips,328,1.939629,-1.939629
+2,,log_fare,328,1.392987,-1.392987
+2,,speed_mph,328,1.101964,-1.101964
+3,,log_tips,488,1.784532,-1.783801
+3,,speed_mph,488,1.537798,-1.537798
+3,,log_fare,488,1.351112,-1.351112

@@ -1,0 +1,37 @@
+{
+  "stage": "scan_and_sample",
+  "n_month_partitions": 24,
+  "warmup_s": 4.0,
+  "warmup_rows": 18479031,
+  "two_months_s": 3.7,
+  "two_months_rows": 36406664,
+  "two_months_rows_per_s": 9839639,
+  "all_months_s": 3.8,
+  "all_months_rows": 471716787,
+  "all_months_rows_per_s": 124135997,
+  "sample_write_s": 36.5,
+  "sample_rows": 23590754,
+  "sample_fraction": 0.05,
+  "sample_dir": "D:\\CS5488project_Group101\\project\\data\\output\\xgb_cost_calibration\\sample5pct",
+  "sample_files": 139,
+  "sample_bytes": 1361964017,
+  "sample_gb": 1.36,
+  "sample_zero_tip_share": 0.8048,
+  "env": {
+    "timestamp": "2026-11-25T19:11:45+08:00",
+    "python": "3.14.6",
+    "executable": "D:\\Anaconda\\python.exe",
+    "platform": "Windows-11-10.0.22621-SP0",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+    "cpu_count": 20,
+    "argv": [
+      "project/code/ml/experiments/xgb_cost_calibration/10_scan_and_sample.py"
+    ],
+    "project_root": "D:\\CS5488project_Group101\\project",
+    "pyspark": "4.2.1",
+    "xgboost": "3.4.1",
+    "numpy": "2.4.6",
+    "pyarrow": "23.0.1"
+  }
+}

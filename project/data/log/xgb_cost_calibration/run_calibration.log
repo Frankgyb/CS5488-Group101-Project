@@ -1,0 +1,41 @@
+[19:28:43] summary -> D:\CS5488project_Group101\project\data\output\xgb_cost_calibration\metrics\calibration_summary.json
+[19:28:43] {
+  "n_rows": 23590754,
+  "matrix_gb": 2.45,
+  "dmatrix_build_s": 13.9,
+  "depth6": {
+    "rounds": 40,
+    "train_s": 47.2,
+    "s_per_round": 1.179,
+    "valid_rmse": 0.09405602514743805,
+    "nthread": 20
+  },
+  "depth8": {
+    "rounds": 15,
+    "train_s": 19.5,
+    "s_per_round": 1.3,
+    "nthread": 20
+  },
+  "thread_scaling": {
+    "rows": 5000000,
+    "rounds": 10,
+    "by_threads": {
+      "4": {
+        "rounds": 10,
+        "train_s": 2.76,
+        "s_per_round": 0.276
+      },
+      "8": {
+        "rounds": 10,
+        "train_s": 2.17,
+        "s_per_round": 0.217
+      },
+      "20": {
+        "rounds": 10,
+        "train_s": 1.78,
+        "s_per_round": 0.178
+      }
+    },
+    "speedup_vs_min_threads": 1.55
+  }
+}

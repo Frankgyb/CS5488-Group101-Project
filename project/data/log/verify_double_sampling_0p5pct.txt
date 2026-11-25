@@ -1,0 +1,36 @@
+Loading 10% sampled data...
+10% sampled data count: 46,706,095
+Extracting 0.5% sub-sample (stratified by bucket)...
+0.5% sub-sample count: 234,245
+
+===== Representativeness Report =====
+Feature      10% Mean     0.5% Mean    Bias       Status
+-----------------------------------------------------------------
+log_miles    1.5090       1.5123       0.22%      PASS
+log_fare     3.0521       3.0538       0.06%      PASS
+log_tips     0.3353       0.3368       0.45%      PASS
+speed_mph    13.5926      13.6163      0.17%      PASS
+log_duration 2.8418       2.8444       0.09%      PASS
+hour_sin     -0.1829      -0.1826      0.15%      PASS
+hour_cos     -0.0699      -0.0681      2.58%      WARN
+day_sin      -0.0671      -0.0680      1.35%      WARN
+day_cos      0.0147       0.0157       6.92%      WARN
+
+===== Layer Distribution Check =====
+10% sampled data layer distribution:
++------+--------+
+|bucket|   count|
++------+--------+
+|  cold| 3746965|
+|   hot|34892507|
+|  warm| 8066623|
++------+--------+
+
+0.5% sub-sample layer distribution:
++------+------+
+|bucket| count|
++------+------+
+|  cold| 18694|
+|   hot|175427|
+|  warm| 40124|
++------+------+

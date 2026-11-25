@@ -1,0 +1,29 @@
+Loading full 10% sampled data...
+Full data count: 46,706,095
+Sampling 2% (seed=42)...
+Sample count: 933,579
+Assembling features and standardizing...
+Standardization done. Cached.
+
+===== GMM K Selection Results =====
+K      LogLikelihood        BIC                Time (s)
+--------------------------------------------------------
+26/11/18 21:35:56 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
+netlib-blas: JNI_OnLoad: dlopen(libopenblas.dll) failed: LoadLibrary failed
+netlib-lapack: JNI_OnLoad: dlopen(libopenblas.dll) failed: LoadLibrary failed
+2      -6607813.25          13217124.89        24.4
+3      -6056233.04          12114720.54        22.1
+4      -5686277.29          11375565.12        20.3
+5      -5726147.88          11456062.38        19.4
+
+===== Summary =====
+K      BIC                LogLikelihood        Time
+--------------------------------------------------------
+2      13217124.89        -6607813.25          24.4
+3      12114720.54        -6056233.04          22.1
+4      11375565.12        -5686277.29          20.3
+5      11456062.38        -5726147.88          19.4
+
+Recommended K (lowest BIC): 4
+
+Done. Spark session will stop.

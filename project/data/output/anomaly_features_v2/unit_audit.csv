@@ -1,0 +1,4 @@
+fact,value,evidence,speed_consistency
+log_duration_unit,MINUTES,data/output/unit_check/unit_check_report.txt,True
+speed_mph_scale,physical mph,data/output/unit_check/unit_check_report.txt,True
+speed_vs_units_max_diff,5.684e-14,this run,True

@@ -1,0 +1,53 @@
+==============================================================================
+IsolationForest reproducibility probe (read-only)
+==============================================================================
+
+-- persisted artifacts --
+   full_scores                  parquet file  rows=4,672,734  cols=13
+   strict_anomalies             parquet file  rows=13,577  cols=15
+   shap_strict_anomalies.csv    csv           rows=2,000  cols=9
+
+full_scores rows : 4,672,734
+strict_anomalies : 13,577  (0.291% of scored rows)
+full_scores cols : ['log_miles', 'log_fare', 'log_tips', 'speed_mph', 'log_duration', 'hour_sin', 'hour_cos', 'day_sin', 'day_cos', 'bucket', 'hvfhs_license_num', 'outlierScore', 'prediction']
+anomaly cols     : ['log_miles', 'log_fare', 'log_tips', 'speed_mph', 'log_duration', 'hour_sin', 'hour_cos', 'day_sin', 'day_cos', 'bucket', 'hvfhs_license_num', 'outlierScore', 'prediction', 'rank_in_layer', 'layer_total']
+
+-- [1] anomaly mask recomputable from full_scores? --
+   full_scores rows with prediction==-1 : 13,577
+   strict_anomalies rows               : 13,577
+   counts agree                        : True
+   exact multiset match (feature tuples) : True
+   first-2000 tuple match               : True
+
+-- [2] per-layer anomaly rate (consistency of the mask) --
+                             size   sum      mean
+bucket hvfhs_license_num                         
+cold   HV0003              275323   351  0.001275
+       HV0005              100276   101  0.001007
+hot    HV0003             2566843  9803  0.003819
+       HV0005              923780  2647  0.002865
+warm   HV0003              595053   475  0.000798
+       HV0005              211459   200  0.000946
+
+-- [3] isolation forest score distribution --
+   min=-0.2459 p01=-0.1293 p25=-0.0115 p50=0.0199 p75=0.0401 p99=0.0631 max=0.0746
+   threshold implied by mask = -0.166403 (max anomaly score)
+
+-- [4] cost estimate for a full 02 rerun --
+   read 6,616,273 rows from 2/16 part files in 0.1s (46,607,571 rows/s, single-threaded pyarrow)
+   sampled_km total rows (per README): 46,706,095
+   projected full read (1 thread): 1s
+   02 only needs FRAC=0.10 -> ~4,670,609.5 rows to score
+   => the sklearn IsolationForest fit on ~4.67M x 9 is the dominant cost
+
+==============================================================================
+SUMMARY
+==============================================================================
+1. strict_anomalies has NO row id and NO stable order -> 07 CANNOT align
+   SHAP values to clusters. This is confirmed, not suspected.
+2. The mask IS fully recoverable from full_scores (same 13,577 rows),
+   so a rerun of 02 is only needed to regenerate SHAP with identifiers.
+3. 02's own header comment says '~467K rows' but the real slice is
+   4,672,734 rows (README:4,672,734 = 10% of 46,706,095) - the comment is stale.
+
+wrote D:\CS5488project_Group101\project\data\output\if_repro_probe\probe_report.txt

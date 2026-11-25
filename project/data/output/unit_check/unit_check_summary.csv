@@ -1,0 +1,9 @@
+check,hypothesis,residual,verdict
+speed_mph_scale,physical mph,"mean=13.6317,std=7.1818",SUPPORTED
+log_duration_unit,MINUTES,p99=4.441e-16,SUPPORTED
+log_duration_unit,HOURS,p99=3.491e+00,REJECTED
+speed_mph_vs_miles_over_duration,consistent,median_implied=11.5576 vs stored 11.5576,SUPPORTED
+log_miles_log1p_domain,unstandardized,min=0.0198,SUPPORTED
+log_fare_log1p_domain,unstandardized,min=0.0000,SUPPORTED
+log_tips_log1p_domain,unstandardized,min=0.0000,SUPPORTED
+log_duration_log1p_domain,unstandardized,min=0.6931,SUPPORTED

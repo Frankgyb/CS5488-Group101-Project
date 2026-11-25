@@ -1,0 +1,26 @@
+{
+  "chosen_k": 2,
+  "mean_silhouette": 0.21984,
+  "std_silhouette": 6e-06,
+  "seeds": [
+    42,
+    7,
+    2024,
+    1,
+    13,
+    99,
+    123,
+    555,
+    777,
+    2025
+  ],
+  "n_init": 50,
+  "winner_per_seed": {
+    "2": 10
+  },
+  "unanimous_winner": true,
+  "bootstrap_ari_mean": 0.9593,
+  "bootstrap_ari_std": 0.0283,
+  "unit_check": "log_duration = log1p(MINUTES), speed_mph physical (see data/output/unit_check/unit_check_report.txt)",
+  "supersedes": "03_kmeans_cluster_anomalies.py single-init K selection"
+}

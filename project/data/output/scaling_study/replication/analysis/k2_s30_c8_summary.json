@@ -1,0 +1,91 @@
+{
+  "generated_at": "2026-11-25T18:27:47+08:00",
+  "job": "k2",
+  "cell": {
+    "n_cores": 8,
+    "shuffle_partitions": 30,
+    "n_rows": 2000000
+  },
+  "primary_local2_median_s": 176.426,
+  "speedup_ci_note": "Speed-up CIs resample the primary local[2] baseline values as well as the 8-core values, matching bootstrap_ci.py; they are not fixed-baseline conditional intervals.",
+  "note": "Post-hoc replication of one cell after observing a 143.793 s high-leverage point. The primary n=4 result is not overwritten. The replication has no contemporaneous local[2] baseline, so no replication-only speed-up is claimed. Pooled n=8 is an unbalanced sensitivity analysis: only this cell has 8 measured runs; the other K2 cells remain n=4.",
+  "primary": {
+    "n": 4,
+    "median": 98.448,
+    "mean": 108.627,
+    "min": 93.818,
+    "max": 143.793,
+    "mad": 2.424,
+    "max_over_median": 1.461,
+    "values": [
+      93.818,
+      98.666,
+      98.231,
+      143.793
+    ],
+    "median_ci95": [
+      93.818,
+      143.793
+    ],
+    "speedup_vs_primary_local2": 1.792,
+    "speedup_ci95": [
+      1.227,
+      2.221
+    ]
+  },
+  "replication": {
+    "n": 4,
+    "median": 108.435,
+    "mean": 108.118,
+    "min": 90.849,
+    "max": 124.752,
+    "mad": 12.097,
+    "max_over_median": 1.15,
+    "values": [
+      90.849,
+      124.752,
+      116.312,
+      100.558
+    ],
+    "median_ci95": [
+      90.849,
+      124.752
+    ],
+    "median_ratio_vs_primary": 1.101,
+    "median_change_pct_vs_primary": 10.1
+  },
+  "pooled_sensitivity": {
+    "n": 8,
+    "median": 99.612,
+    "mean": 108.372,
+    "min": 90.849,
+    "max": 143.793,
+    "mad": 7.278,
+    "max_over_median": 1.444,
+    "values": [
+      93.818,
+      98.666,
+      98.231,
+      143.793,
+      90.849,
+      124.752,
+      116.312,
+      100.558
+    ],
+    "median_ci95": [
+      93.818,
+      124.752
+    ],
+    "speedup_vs_primary_local2": 1.771,
+    "speedup_ci95": [
+      1.414,
+      2.195
+    ],
+    "unbalanced": true
+  },
+  "interpretation": {
+    "replication_reproduces_primary_slow_tail": false,
+    "replication_max_over_median": 1.15,
+    "primary_max_over_median": 1.461
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "k1_present": true,
+  "k2_present": true,
+  "s3_present": true,
+  "k1_n_rows_unique": [
+    2000000
+  ],
+  "k2_n_rows_unique": [
+    2000000
+  ],
+  "s3_n_rows_unique": [
+    1000000
+  ],
+  "k1_wssse_unique": [
+    13710124.568
+  ],
+  "k2_wssse_unique": [
+    9404845.652
+  ],
+  "k1_n_iter_unique": [
+    20
+  ],
+  "k2_n_iter_unique": [
+    20
+  ],
+  "k1_grids": 7,
+  "k2_grids": 6,
+  "k1_min_runs_per_grid": 4,
+  "k1_local1_runs": 2,
+  "k2_min_runs_per_grid": 4,
+  "s3_min_runs_per_job": 4,
+  "s3_all_score_equal": true,
+  "protected": null,
+  "protected_ok": true,
+  "pass": true
+}

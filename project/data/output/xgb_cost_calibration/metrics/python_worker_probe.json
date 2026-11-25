@@ -1,0 +1,83 @@
+{
+  "stage": "python_worker_probe",
+  "resolver": {
+    "python3": {
+      "name": "python3",
+      "returncode": 9009,
+      "python": null,
+      "pyspark_installed": null,
+      "pyspark": null,
+      "stderr": []
+    },
+    "python": {
+      "name": "python",
+      "returncode": 0,
+      "python": "3.14.6",
+      "pyspark_installed": true,
+      "pyspark": "4.2.1",
+      "stderr": []
+    },
+    "driver": "D:\\Anaconda\\python.exe"
+  },
+  "checks": {
+    "rdd_map_unset": {
+      "mode": "rdd",
+      "status": "fail",
+      "error_type": "Py4JJavaError",
+      "error_lines": [
+        "py4j.protocol.Py4JJavaError: An error occurred while calling z:org.apache.spark.api.python.PythonRDD.collectAndServe.",
+        ": org.apache.spark.SparkException: Job aborted due to stage failure: Task 3 in stage 0.0 failed 1 times, most recent failure: Lost task 3.0 in stage 0.0 (TID 3) (172.27.138.165 executor driver): org.apache.spark.SparkException: Python worker failed to connect back.",
+        "at org.apache.spark.api.python.PythonWorkerFactory.createSimpleWorker(PythonWorkerFactory.scala:303)",
+        "at org.apache.spark.api.python.PythonWorkerFactory.create(PythonWorkerFactory.scala:154)"
+      ],
+      "seconds": 17.1,
+      "label": "rdd/unset"
+    },
+    "rdd_map_explicit": {
+      "mode": "rdd",
+      "status": "ok",
+      "detail": "sum=999000",
+      "seconds": 11.4,
+      "label": "rdd/explicit"
+    },
+    "spark_xgb_explicit": {
+      "mode": "xgb",
+      "status": "ok",
+      "detail": "fitted 100000 rows",
+      "seconds": 21.0,
+      "label": "xgb/explicit"
+    },
+    "daemon_import": {
+      "status": "fail",
+      "error_type": "ImportError",
+      "error_lines": [
+        "ImportError: cannot import name 'SIGHUP' from 'signal' (D:\\Anaconda\\Lib\\signal.py)"
+      ],
+      "seconds": 0.2
+    }
+  },
+  "verdict": {
+    "worker_blocked_without_env": true,
+    "worker_ok_with_env": true,
+    "distributed_xgb_available": true,
+    "root_cause": "python interpreter resolution: without PYSPARK_PYTHON, Spark launches workers with `python3`, which is not an executable here (returncode 9009)",
+    "daemon_import_failure_is_harmless": true
+  },
+  "env": {
+    "timestamp": "2026-11-25T19:28:38+08:00",
+    "python": "3.14.6",
+    "executable": "D:\\Anaconda\\python.exe",
+    "platform": "Windows-11-10.0.22621-SP0",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+    "cpu_count": 20,
+    "argv": [
+      "project/code/ml/experiments/xgb_cost_calibration/13_python_worker_probe.py"
+    ],
+    "project_root": "D:\\CS5488project_Group101\\project",
+    "pyspark": "4.2.1",
+    "xgboost": "3.4.1",
+    "numpy": "2.4.6",
+    "pyarrow": "23.0.1"
+  }
+}

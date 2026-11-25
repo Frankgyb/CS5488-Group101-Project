@@ -1,0 +1,45 @@
+{
+  "status": "done",
+  "step": "finished",
+  "step_index": 2,
+  "total_steps": 2,
+  "started_at": "2026-11-25T18:38:36+08:00",
+  "updated_at": "2026-11-25T18:39:15+08:00",
+  "finished_at": "2026-11-25T18:39:15+08:00",
+  "pid": 12836,
+  "out_dir": "D:\\CS5488project_Group101\\project\\data\\output\\scaling_study",
+  "commands": [
+    {
+      "step": "plots",
+      "cmd": [
+        "D:\\Anaconda\\python.exe",
+        "-u",
+        "D:\\CS5488project_Group101\\project\\code\\ml\\experiments\\parallel_scaling\\make_scaling_plots.py",
+        "--in-dir",
+        "D:\\CS5488project_Group101\\project\\data\\output\\scaling_study",
+        "--out-dir",
+        "D:\\CS5488project_Group101\\project\\data\\output\\scaling_study"
+      ],
+      "returncode": 0,
+      "log": "D:\\CS5488project_Group101\\project\\data\\log\\scaling_study\\run_20261125_183836\\01_plots.log",
+      "finished_at": "2026-11-25T18:38:38+08:00"
+    },
+    {
+      "step": "bootstrap",
+      "cmd": [
+        "D:\\Anaconda\\python.exe",
+        "-u",
+        "D:\\CS5488project_Group101\\project\\code\\ml\\experiments\\parallel_scaling\\bootstrap_ci.py",
+        "--in-dir",
+        "D:\\CS5488project_Group101\\project\\data\\output\\scaling_study",
+        "--out",
+        "D:\\CS5488project_Group101\\project\\data\\output\\scaling_study\\bootstrap_ci.json"
+      ],
+      "returncode": 0,
+      "log": "D:\\CS5488project_Group101\\project\\data\\log\\scaling_study\\run_20261125_183836\\02_bootstrap.log",
+      "finished_at": "2026-11-25T18:39:15+08:00"
+    }
+  ],
+  "error": null,
+  "checks_pass": true
+}

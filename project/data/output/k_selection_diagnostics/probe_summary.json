@@ -1,0 +1,11 @@
+{
+  "input": "D:\\CS5488project_Group101\\project\\data\\output\\if_results_rowkeyed\\strict_anomalies_rowkeyed",
+  "n_rows": 13577,
+  "verdict_argmax": {
+    "spark_squaredEuclidean": 2,
+    "sklearn_euclidean": 2
+  },
+  "zero_vectors_exact": 0,
+  "norm_min": 1.7141289208250778,
+  "duplicate_feature_rows": 0
+}

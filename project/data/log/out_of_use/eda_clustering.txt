@@ -1,0 +1,28 @@
+Loaded 13577 anomaly records from D:\CS5488project_Group101\project\data\output\if_results_10pct_of_10pct\strict_anomalies
+=== Feature Skewness ===
+hour_sin        0.586791
+day_cos         0.274311
+log_miles       0.201494
+log_duration    0.145987
+day_sin         0.074942
+log_fare       -0.026816
+hour_cos       -0.326545
+speed_mph      -0.720560
+log_tips       -1.539797
+dtype: float64
+=== Outlier Score Statistics ===
+count    13577.000000
+mean        -0.186364
+std          0.015456
+min         -0.245878
+25%         -0.196453
+50%         -0.182568
+75%         -0.173556
+max         -0.166403
+Name: outlierScore, dtype: float64
+=== PCA 2D Projection ===
+Explained variance ratio (2 components): 0.562
+=== Decision Guidance ===
+- If PCA shows distinct blobs: use KMeans with silhouette score.
+- If no clear structure: try DBSCAN or accept that anomalies are homogeneous.
+- outlierScore spread is wide enough? Check histogram above.

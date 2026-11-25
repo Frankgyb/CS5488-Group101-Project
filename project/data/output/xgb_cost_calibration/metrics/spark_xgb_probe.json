@@ -1,0 +1,56 @@
+{
+  "stage": "spark_xgb_probe",
+  "master": "local[8]",
+  "rows_target": 2000000,
+  "rounds": 10,
+  "max_depth": 6,
+  "runs": [
+    {
+      "num_workers": 4,
+      "task_cpus": 1,
+      "master": "local[8]",
+      "rows": 2000000,
+      "rounds": 10,
+      "n_rows": 1999690,
+      "prepare_s": 10.4,
+      "status": "ok",
+      "fit_s": 27.8,
+      "s_per_round": 2.779,
+      "wall_s": 46.7,
+      "label": "local[8]/workers=4/rows=2000000"
+    },
+    {
+      "num_workers": 8,
+      "task_cpus": 1,
+      "master": "local[8]",
+      "rows": 2000000,
+      "rounds": 10,
+      "n_rows": 1999690,
+      "prepare_s": 10.8,
+      "status": "ok",
+      "fit_s": 29.5,
+      "s_per_round": 2.949,
+      "wall_s": 49.1,
+      "label": "local[8]/workers=8/rows=2000000"
+    }
+  ],
+  "speedup_best_vs_slowest": 1.061,
+  "fastest": "local[8]/workers=4/rows=2000000",
+  "env": {
+    "timestamp": "2026-11-25T19:22:32+08:00",
+    "python": "3.14.6",
+    "executable": "D:\\Anaconda\\python.exe",
+    "platform": "Windows-11-10.0.22621-SP0",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+    "cpu_count": 20,
+    "argv": [
+      "project/code/ml/experiments/xgb_cost_calibration/14_spark_xgb_probe.py"
+    ],
+    "project_root": "D:\\CS5488project_Group101\\project",
+    "pyspark": "4.2.1",
+    "xgboost": "3.4.1",
+    "numpy": "2.4.6",
+    "pyarrow": "23.0.1"
+  }
+}

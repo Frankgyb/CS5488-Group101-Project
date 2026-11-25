@@ -1,0 +1,26 @@
+Loading full 10% sampled data...
+Full data count: 46,706,095
+Sampling 2% (seed=42)...
+Sample count: 933,579
+Assembling features and standardizing...
+Standardization done. Cached.
+
+===== K Selection Results =====
+K      WSSSE            Silhouette   Time (s)
+------------------------------------------------
+26/11/18 19:22:38 WARN SparkStringUtils: Truncated the string representation of a plan since it was too large. This behavior can be adjusted by setting 'spark.sql.debug.maxToStringFields'.
+netlib-blas: JNI_OnLoad: dlopen(libopenblas.dll) failed: LoadLibrary failed
+D:\Anaconda\Lib\site-packages\pyspark\ml\clustering.py:1016: FutureWarning: Deprecated in 3.0.0. It will be removed in future versions. Use ClusteringEvaluator instead. You can also get the cost on the training dataset in the summary.
+  warnings.warn(
+5      5230473.87       0.1663       51.4
+6      4947183.12       0.1845       43.8
+7      4707822.84       0.1862       42.7
+8      4396803.35       0.2107       43.6
+
+===== Summary =====
+K=5: WSSSE=5230473.87, Silhouette=0.1663, Time=51.4s
+K=6: WSSSE=4947183.12, Silhouette=0.1845, Time=43.8s
+K=7: WSSSE=4707822.84, Silhouette=0.1862, Time=42.7s
+K=8: WSSSE=4396803.35, Silhouette=0.2107, Time=43.6s
+
+Done. Spark session will stop.

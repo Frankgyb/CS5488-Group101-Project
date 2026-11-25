@@ -1,0 +1,69 @@
+==============================================================================
+07b K-row audit -- is 102,254.7 a plausible single-init draw?
+==============================================================================
+input : D:\CS5488project_Group101\project\data\output\if_results_rowkeyed\strict_anomalies_rowkeyed
+rows  : 13,577
+fits  : K=2..8 x 6 repetitions, seed=42, maxIter=20, tol=1e-4
+
+  K=2 rep=0: WSSSE=   98241.67  silhouette=0.3641
+  K=2 rep=1: WSSSE=   98241.67  silhouette=0.3641
+  K=2 rep=2: WSSSE=   98241.67  silhouette=0.3641
+  K=2 rep=3: WSSSE=   98241.67  silhouette=0.3641
+  K=2 rep=4: WSSSE=   98241.67  silhouette=0.3641
+  K=2 rep=5: WSSSE=   98241.67  silhouette=0.3641
+  K=3 rep=0: WSSSE=   83693.95  silhouette=0.3082
+  K=3 rep=1: WSSSE=   83693.95  silhouette=0.3082
+  K=3 rep=2: WSSSE=   83693.95  silhouette=0.3082
+  K=3 rep=3: WSSSE=   83693.95  silhouette=0.3082
+  K=3 rep=4: WSSSE=   83693.95  silhouette=0.3082
+  K=3 rep=5: WSSSE=   83693.95  silhouette=0.3082
+  K=4 rep=0: WSSSE=   75717.24  silhouette=0.3028
+  K=4 rep=1: WSSSE=   75717.24  silhouette=0.3028
+  K=4 rep=2: WSSSE=   75717.24  silhouette=0.3028
+  K=4 rep=3: WSSSE=   75717.24  silhouette=0.3028
+  K=4 rep=4: WSSSE=   75717.24  silhouette=0.3028
+  K=4 rep=5: WSSSE=   75717.24  silhouette=0.3028
+  K=5 rep=0: WSSSE=   68572.94  silhouette=0.3108
+  K=5 rep=1: WSSSE=   68572.94  silhouette=0.3108
+  K=5 rep=2: WSSSE=   68572.94  silhouette=0.3108
+  K=5 rep=3: WSSSE=   68572.94  silhouette=0.3108
+  K=5 rep=4: WSSSE=   68572.94  silhouette=0.3108
+  K=5 rep=5: WSSSE=   68572.94  silhouette=0.3108
+  K=6 rep=0: WSSSE=   64285.17  silhouette=0.2842
+  K=6 rep=1: WSSSE=   64285.17  silhouette=0.2842
+  K=6 rep=2: WSSSE=   64285.17  silhouette=0.2842
+  K=6 rep=3: WSSSE=   64285.17  silhouette=0.2842
+  K=6 rep=4: WSSSE=   64285.17  silhouette=0.2842
+  K=6 rep=5: WSSSE=   64285.17  silhouette=0.2842
+  K=7 rep=0: WSSSE=   61485.70  silhouette=0.2818
+  K=7 rep=1: WSSSE=   61485.70  silhouette=0.2818
+  K=7 rep=2: WSSSE=   61485.70  silhouette=0.2818
+  K=7 rep=3: WSSSE=   61485.70  silhouette=0.2818
+  K=7 rep=4: WSSSE=   61485.70  silhouette=0.2818
+  K=7 rep=5: WSSSE=   61485.70  silhouette=0.2818
+  K=8 rep=0: WSSSE=   59688.94  silhouette=0.2729
+  K=8 rep=1: WSSSE=   59688.94  silhouette=0.2729
+  K=8 rep=2: WSSSE=   59688.94  silhouette=0.2729
+  K=8 rep=3: WSSSE=   59688.94  silhouette=0.2729
+  K=8 rep=4: WSSSE=   59688.94  silhouette=0.2729
+  K=8 rep=5: WSSSE=   59688.94  silhouette=0.2729
+
+==============================================================================
+per-K spread vs the 07b recorded value
+==============================================================================
+ K | 07b recorded | this run min          max   spread | 07b inside? | 03-style (sq)
+ 2 |    102,254.7 |     98,241.7     98,241.7      0.0 |       False |       0.2731
+ 3 |     83,681.9 |     83,693.9     83,693.9      0.0 |       False |       0.3084
+ 4 |     75,427.0 |     75,717.2     75,717.2      0.0 |       False |       0.3119
+ 5 |     71,570.2 |     68,572.9     68,572.9      0.0 |       False |       0.2617
+ 6 |     63,977.5 |     64,285.2     64,285.2      0.0 |       False |       0.2821
+ 7 |     61,263.3 |     61,485.7     61,485.7      0.0 |       False |       0.2694
+ 8 |     58,756.9 |     59,688.9     59,688.9      0.0 |       False |       0.2697
+
+==============================================================================
+verdict
+==============================================================================
+  K=2: this run tops out at WSSSE 98,241.7, BELOW 07b's 102,254.7.
+       -> the repetition explanation does NOT cover it; 07b's K=2 row comes from a different configuration and the row should be re-generated.
+  K=4: silhouette across repetitions ranges [0.3028, 0.3028]; 07b recorded 0.3119 (inside range: False).
+       K=4 still beats every other K in every repetition: False

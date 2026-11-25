@@ -1,0 +1,86 @@
+=================================================================
+Full Benchmark started at 2026-11-18 01:50:57.971653
+Cleaned data root: D:\CS5488project_Group101\project\data\output\cleaned
+Hardware: i7-12700H, 32GB RAM, SSD (assumed)
+=================================================================
+
+--- A: Partition Size (local[4]) ---
+Partition 32m:
+Discovered 24 partitions (year/month).
+  Run 1: 8.57s
+  Run 2: 3.64s
+  Run 3: 3.52s
+  Average over 3 runs: 5.24s
+
+Partition 128m:
+Discovered 24 partitions (year/month).
+  Run 1: 2.59s
+  Run 2: 2.71s
+  Run 3: 2.31s
+  Average over 3 runs: 2.53s
+
+Partition 512m:
+Discovered 24 partitions (year/month).
+  Run 1: 2.61s
+  Run 2: 2.24s
+  Run 3: 2.48s
+  Average over 3 runs: 2.44s
+
+Partition 2048m:
+Discovered 24 partitions (year/month).
+  Run 1: 2.13s
+  Run 2: 2.71s
+  Run 3: 2.26s
+  Average over 3 runs: 2.37s
+
+
+--- B: Core Scaling (128MB partition) ---
+Cores=1:
+Discovered 24 partitions (year/month).
+  Run 1: 4.73s
+  Run 2: 4.74s
+  Run 3: 4.89s
+  Average over 3 runs: 4.78s
+
+Cores=2:
+Discovered 24 partitions (year/month).
+  Run 1: 3.11s
+  Run 2: 3.38s
+  Run 3: 3.19s
+  Average over 3 runs: 3.23s
+
+Cores=4:
+Discovered 24 partitions (year/month).
+  Run 1: 2.13s
+  Run 2: 2.19s
+  Run 3: 2.19s
+  Average over 3 runs: 2.17s
+
+Cores=8:
+Discovered 24 partitions (year/month).
+  Run 1: 2.39s
+  Run 2: 1.90s
+  Run 3: 1.95s
+  Average over 3 runs: 2.08s
+
+
+--- C: Column Pruning (local[4], 128MB) ---
+All columns:
+Discovered 24 partitions (year/month).
+  Run 1: 2.16s
+  Run 2: 2.18s
+  Run 3: 2.30s
+  Average over 3 runs: 2.22s
+
+Only wait_minutes, base_passenger_fare, trip_miles:
+Discovered 24 partitions (year/month).
+  Run 1: 2.50s
+  Run 2: 2.17s
+  Run 3: 2.25s
+  Average over 3 runs: 2.30s
+
+Column pruning speedup: 0.96x
+
+=================================================================
+Full Benchmark finished at 2026-11-18 01:52:43.106039
+Results saved to D:\CS5488project_Group101\project\data\log\benchmark_full_20261118_015057.txt

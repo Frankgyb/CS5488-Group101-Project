@@ -1,0 +1,3 @@
+job,run_idx,is_warmup,n_cores,shuffle_partitions,n_rows,input_partitions,spark_boot_s,prep_s,fit_s,wssse,n_iter,cpu_pct_mean,cpu_pct_max,cpu_pct_baseline,parallel_eff,parallel_eff_net,javaw_before,javaw_after,free_ram_gb,started_at,finished_at
+k1,0,True,4,120,2000000,16,11.821,15.868,93.941,13710124.567573905,20,28.6,67.9,10.64,1.43,0.8979,1,1,14.97,2026-11-25T06:19:50+08:00,2026-11-25T06:21:24+08:00
+k1,1,False,4,120,2000000,16,11.821,15.868,75.145,13710124.567573905,20,15.85,55.9,10.64,0.7926,0.2605,1,1,15.23,2026-11-25T06:21:24+08:00,2026-11-25T06:22:39+08:00

@@ -1,0 +1,2 @@
+job,baseline_core,n_cores,shuffle_partitions,n_rows,n_runs,fit_s_median,fit_s_min,fit_s_max,fit_s_mad,speedup_vs_baseline,efficiency,parallel_eff_median,parallel_eff_net_median,input_partitions,amdahl_a,amdahl_b,amdahl_alpha,amdahl_r2
+k1,2,4,120,2000000,1,75.145,75.145,75.145,0.0,,,0.793,0.261,16,,,,

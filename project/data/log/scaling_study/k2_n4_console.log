@@ -1,0 +1,13 @@
+[step 1/4] prepare_2m
+  cmd: D:\Anaconda\python.exe -u D:\CS5488project_Group101\project\code\ml\experiments\parallel_scaling\prepare_subset.py --rows 2000000 --out D:\CS5488project_Group101\project\data\output\scaling_study\subsets\subset_2m --if-exists skip
+[step 1/4] prepare_2m OK
+[step 2/4] s2_k2
+  cmd: D:\Anaconda\python.exe -u D:\CS5488project_Group101\project\code\ml\experiments\parallel_scaling\run_kmeans_scaling.py --job k2 --rows 2000000 --subset D:\CS5488project_Group101\project\data\output\scaling_study\subsets\subset_2m --cores 2,4,8 --shuffle 30,120 --repeats 5 --warmup 1 --order random --order-seed 42 --baseline 2 --out-dir D:\CS5488project_Group101\project\data\output\scaling_study --resume
+[step 2/4] s2_k2 OK
+[step 3/4] plots
+  cmd: D:\Anaconda\python.exe -u D:\CS5488project_Group101\project\code\ml\experiments\parallel_scaling\make_scaling_plots.py --in-dir D:\CS5488project_Group101\project\data\output\scaling_study --out-dir D:\CS5488project_Group101\project\data\output\scaling_study
+[step 3/4] plots OK
+[step 4/4] bootstrap
+  cmd: D:\Anaconda\python.exe -u D:\CS5488project_Group101\project\code\ml\experiments\parallel_scaling\bootstrap_ci.py --in-dir D:\CS5488project_Group101\project\data\output\scaling_study --out D:\CS5488project_Group101\project\data\output\scaling_study\bootstrap_ci.json
+[step 4/4] bootstrap OK
+[run] done; checks_pass=True

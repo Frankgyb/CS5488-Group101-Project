@@ -1,0 +1,56 @@
+==============================================================================
+UNIT VERIFICATION - sampled_km cross-check
+==============================================================================
+source: D:\CS5488project_Group101\project\data\output\sampled_km
+NOTE: raw trip_miles / duration_min were NOT persisted by 01_sample_v2.py
+      (persist_cols excludes them), so we verify units with the
+      miles/ speed / duration identity instead of a raw round-trip.
+part files available: 16
+rows loaded: 13,271,732  (first 4 part files)
+rows used for numeric checks: 2,000,000
+
+-- [1] speed_mph identity check --
+   mean=13.6317  std=7.1818  min=1.0000  max=75.0818
+   p01=3.9821  p50=11.5576  p99=37.6524
+   VERDICT: PHYSICAL mph
+   (a standardized score would have mean~0, std~1 and negative values)
+   observed min=1.0000 >= 0 and std=7.1818 != 1 -> physical
+
+-- [2] log_duration unit hypothesis test --
+   identity used: log1p((miles/speed_mph)*60) must equal log_duration
+                  when duration is stored in MINUTES
+   rows tested: 2,000,000
+   H_A log_duration = log1p(MINUTES): median|res|=0.000e+00  p99|res|=4.441e-16  max|res|=8.882e-16
+   H_B log_duration = log1p(HOURS)  : median|res|=2.601e+00  p99|res|=3.491e+00  max|res|=3.812e+00
+
+   H_A (MINUTES) exact to float precision: True
+   H_B (HOURS)   exact to float precision: False
+   VERDICT: log_duration = log1p(MINUTES)
+   recovered median duration = 16.08 minutes  (a NYC FHV trip is ~10-20 minutes)
+   if it were hours, median trip would be implausible
+
+-- [3] speed_mph consistency --
+   implied speed from recovered duration (mph): median=11.56  == stored speed median 11.56
+
+-- [4] log features remain in log1p space (no z-scoring applied) --
+   log_miles      min= 0.0198  mean= 1.5104  max= 4.6151   (all >= 0 -> log1p domain preserved)
+   log_fare       min= 0.0000  mean= 3.0334  max= 5.5255   (all >= 0 -> log1p domain preserved)
+   log_tips       min= 0.0000  mean= 0.3364  max= 4.6151   (all >= 0 -> log1p domain preserved)
+   log_duration   min= 0.6931  mean= 2.8404  max= 5.1980   (all >= 0 -> log1p domain preserved)
+
+==============================================================================
+CONCLUSIONS
+==============================================================================
+1. log_duration is log1p(MINUTES). The HOURS hypothesis is rejected with a
+   p99 residual of 3.491 vs 4.441e-16 for MINUTES.
+2. speed_mph holds physical mph values (range bounded by the
+   SPEED_MIN..SPEED_MAX filter in 01_sample_v2.py:126-128, mean far from 0).
+   The z-score-looking numbers in kmeans_anomaly_clusters/cluster_centers.csv
+   are scaler-space centers printed under raw column names (03:115-118),
+   NOT evidence that the persisted data was standardized.
+3. log_miles / log_fare / log_tips / log_duration keep their log1p domain
+   end-to-end (02:150-151 and 03:128-131 write the raw feature columns back),
+   so np.expm1() recovers physical units directly.
+
+wrote D:\CS5488project_Group101\project\data\output\unit_check\unit_check_report.txt
+wrote D:\CS5488project_Group101\project\data\output\unit_check\unit_check_summary.csv

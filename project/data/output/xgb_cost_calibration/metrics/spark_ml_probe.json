@@ -1,0 +1,36 @@
+{
+  "stage": "spark_ml_probe",
+  "master": "local[8]",
+  "cores": 120,
+  "read_assemble_s": 19.6,
+  "n_rows": 2000000,
+  "gbt": {
+    "max_iter": 5,
+    "max_depth": 4,
+    "fit_s": 37.1,
+    "s_per_iter": 7.42
+  },
+  "rf": {
+    "num_trees": 10,
+    "max_depth": 5,
+    "fit_s": 34.7,
+    "s_per_tree": 3.47
+  },
+  "env": {
+    "timestamp": "2026-11-25T19:16:31+08:00",
+    "python": "3.14.6",
+    "executable": "D:\\Anaconda\\python.exe",
+    "platform": "Windows-11-10.0.22621-SP0",
+    "machine": "AMD64",
+    "processor": "Intel64 Family 6 Model 154 Stepping 3, GenuineIntel",
+    "cpu_count": 20,
+    "argv": [
+      "project/code/ml/experiments/xgb_cost_calibration/12_spark_ml_probe.py"
+    ],
+    "project_root": "D:\\CS5488project_Group101\\project",
+    "pyspark": "4.2.1",
+    "xgboost": "3.4.1",
+    "numpy": "2.4.6",
+    "pyarrow": "23.0.1"
+  }
+}
