@@ -1,0 +1,68 @@
+[
+  {
+    "script": "01_audit_aggregate_data.py",
+    "original_script": "tmp/audit_bi_handoff.py",
+    "purpose": "Audit both aggregate tables and reconcile L1/L2 totals",
+    "original_sha256": "98dcb7cb63ba98603d6a58e81036a23c06632755c4a87d466c6b8aba5a7c3a79"
+  },
+  {
+    "script": "02_trip_volume_and_platform_share.py",
+    "original_script": "bi_run.py",
+    "purpose": "Daily trips, weekday-hour volume, pickup zones, monthly platform shares",
+    "original_sha256": "aa7adb954eff4611ab261b9f46344b21ead113d6f09f6fc01f969729364d6e11"
+  },
+  {
+    "script": "03_weekly_stl_decomposition.py",
+    "original_script": "bi_time_series.py",
+    "purpose": "Weekly STL decomposition and residual screening",
+    "original_sha256": "3475396ddb408e6314b28511b5d426db08fdd06a1514b9be2e439800ab6d0c59"
+  },
+  {
+    "script": "04_monthly_trends_and_smoothing.py",
+    "original_script": "bi_moving_averages.py",
+    "purpose": "Monthly means, 7/31-day rolling means and block means",
+    "original_sha256": "2e4dd7cd9d8cdd9e2576c065fd65d8d37659c0f61dc4c34c2430b6765303a07f"
+  },
+  {
+    "script": "05_weekday_significance_tests.py",
+    "original_script": "bi_weekly_significance.py",
+    "purpose": "Daily log regression, Newey-West HAC inference and Holm adjustment",
+    "original_sha256": "ac32cde5d774bc20a3816bef2b084655251448b7aeb2cb0ff9d0082233744592"
+  },
+  {
+    "script": "06_hourly_wait_analysis.py",
+    "original_script": "bi_hourly_wait.py",
+    "purpose": "Corrected L1 validation and pooled hourly waiting times",
+    "original_sha256": "29fd2ac953fec0d8d5eb10b57a52fd297a0cd306a05fe31b835b8bd03b4a4ab4"
+  },
+  {
+    "script": "07_weekday_hour_wait_heatmap.py",
+    "original_script": "bi_weekday_hour_wait.py",
+    "purpose": "Weekday-by-hour waiting-time heatmap",
+    "original_sha256": "6adb08adaa4062ecd39e6abc07fac368449b8c29352ef6bef45c2ba180354b74"
+  },
+  {
+    "script": "08_platform_borough_comparison.py",
+    "original_script": "bi_platform_comparison.py",
+    "purpose": "Platform trip composition and borough-hour wait differences",
+    "original_sha256": "eea158d831b8010b3d0eb1115c86cdb05d7dd94dd6ce8b77676160047344d3de"
+  },
+  {
+    "script": "09_platform_hourly_wait.py",
+    "original_script": "bi_platform_hourly_wait.py",
+    "purpose": "Uber/Lyft hourly waiting-time comparison",
+    "original_sha256": "0768acfd93cbb598e0ed1b4503bb79cb84506fac7034765bdb424ae7da90232f"
+  },
+  {
+    "script": "10_uber_borough_hour_heatmap.py",
+    "original_script": "bi_uber_borough_hour_wait.py",
+    "purpose": "Uber borough-by-hour waiting-time heatmap",
+    "original_sha256": "ff723ad71e49a6a1779f33dea83b215703e1753c15c6f7109ba38215af9746f5"
+  },
+  {
+    "script": "11_annual_seasonality_exploration.py",
+    "original_script": "bi_annual_time_series.py",
+    "purpose": "Exploratory annual MSTL decomposition and sensitivity checks",
+    "original_sha256": "2697393546a67d4c8d2e8a32cf2bedfb702c4677d6c2b4d139d0da50b01f6bd5"
+  }
+]
