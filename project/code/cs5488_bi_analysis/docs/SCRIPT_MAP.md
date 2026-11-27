@@ -20,7 +20,7 @@ STL residual candidates in stage 03 are aggregate-day diagnostics. They are dist
 
 ## Report figures
 
-`export_report_figures.py` creates these filenames in `results/report_figures/`, matching the group's `report/main.tex`:
+`export_report_figures.py` creates these filenames in `results/report_figures/`, matching the figures in the group's `report/report.pdf`:
 
 | Report filename | Source |
 | --- | --- |

@@ -1,4 +1,4 @@
-"""Export nine charts under the filenames already used by report/main.tex."""
+"""Export nine charts under the filenames already used by the group's report."""
 import argparse
 import json
 from pathlib import Path

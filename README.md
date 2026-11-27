@@ -41,8 +41,7 @@ Spark job rather than a pandas script.
 │       ├── log/                  # run logs; provenance for every number in the report
 │       └── output/               # small artefacts: tables, figures, scaling evidence
 ├── report/
-│   ├── main.tex                  # report source (figures are read from project/data/output)
-│   └── main.pdf                  # compiled report
+│   └── report.pdf                # compiled report (source kept locally, not tracked)
 └── requirement/                  # assignment brief, marking sheet, cover/report templates
 ```
 
@@ -108,9 +107,7 @@ downloading the 11.6 GB release.
 
 ## Report
 
-The compiled report is [`report/main.pdf`](report/main.pdf); the source is
-[`report/main.tex`](report/main.tex). Figures are read from `../project/data/output/`, so the
-report can be recompiled from a fresh clone with `latexmk -pdf main.tex` inside `report/`.
+The compiled report is [`report/report.pdf`](report/report.pdf); a fresh clone contains the PDF only.
 
 ## Team contributions
 

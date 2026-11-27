@@ -23,7 +23,7 @@ python run_analysis.py --data "/path/to/bi_aggregates_compact"
 
 `--data` must point to the parent directory containing **both** `l1_detail/` and `l2_overview/`, not to one monthly raw TLC file. Use the corrected L1 version containing `total_valid_wait_minutes`.
 
-All 11 analyses run in order. Results, CSV tables, figures and logs are written to `results/`. The runner also creates `results/report_figures/` using the nine image filenames in the group's LaTeX report.
+All 11 analyses run in order. Results, CSV tables, figures and logs are written to `results/`. The runner also creates `results/report_figures/` using the nine image filenames in the group's report.
 
 ```bash
 # Only check dependencies, date coverage and required input columns.

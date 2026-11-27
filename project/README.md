@@ -4,7 +4,7 @@ Parallel analytics on 471,960,468 NYC for-hire-vehicle trips: EDA, anomaly detec
 behavioural clustering, all executed on a **single machine** with PySpark (`local[*]`).
 
 This README is a short orientation to the deliverable. The full work logic and results are in
-the project report (`../report/main.pdf`); the numbers can be traced through the per-directory
+the project report (`../report/report.pdf`); the numbers can be traced through the per-directory
 READMEs under `data/output/` and the evidence bundle in `data/output/scaling_study/`.
 
 ---
@@ -13,7 +13,7 @@ READMEs under `data/output/` and the evidence bundle in `data/output/scaling_stu
 
 | # | Question | Method | Main output |
 |---|---|---|---|
-| a | How do demand, fare, and tipping distribute over time, space, and platform? | Spark SQL over Parquet, pre-aggregated to daily grain | `data/output/bi_aggregates_compact/` (delivered to a separate BI track; not analysed here) |
+| a | How do trip volume and request-to-pickup waiting time distribute over time, space, and platform? | Spark SQL over Parquet, pre-aggregated to daily grain | `data/output/bi_aggregates_compact/`; analysed in Part II (Section 5) of the report |
 | b | Which trips are abnormal in fare, distance, duration, or tip? | IsolationForest (sklearn, fitted on driver) + SHAP attribution | `data/output/if_results_rowkeyed/`, `data/output/shap_final/` |
 | c | Do those anomalies form interpretable behavioural groups? | KMeans, K chosen by multi-seed silhouette + bootstrap ARI | `data/output/clustering_robustness/`, `data/output/anomaly_features*/` |
 
