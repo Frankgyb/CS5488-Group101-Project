@@ -435,17 +435,176 @@ A final number belongs in this section but not in the table. The largest single 
 \section{Business Intelligence}
 \label{sec:bi}
 
-\textbf{[This part is reserved for the business-intelligence component, delivered by Shiyin Chen.]} It starts from the validated table defined in Section~\ref{sec:data} and covers the preparation specific to the BI track as well as the descriptive findings that follow from it; its internal structure is left to its author. Two pre-aggregated inputs are already available. \code{l1\_detail} holds 8{,}651{,}895 rows keyed by date, hour, pickup zone and platform, with trip counts, total fare, mean wait, mean duration, total distance, total tips and validity counts; \code{l2\_overview} holds 4{,}421{,}839 rows for the same dates without the platform dimension. Both are partitioned into 731 daily folders, 1{,}462 files in total, and occupy 558~MB with zstd compression against 11.6~GB of raw Parquet. Every chart in this part must state which validity flag it applies and which denominator it uses; waiting-time statistics in particular must filter with \code{wait\_valid = 1}.
+All results in this part are computed on the cleaned table described in
+Section~\ref{sec:data}, after the validity filter introduced there.
+Percentages of trip volume use all flag-valid trips as the denominator;
+waiting-time figures are further restricted to \code{wait\_valid = 1}, which
+removes records whose request-to-pickup interval is missing or negative. We
+analyse 471.96~million recorded trips to identify when and where trips occur
+and how waiting times differ. Weekly patterns and longer waits in specific
+periods provide a basis for testing service improvements.
 
 % ---------------------------------------------------------------------
-% BI figure slot -- uncomment and fill when the BI component is ready.
-% \begin{figure}[t]
-% \centering
-% \includegraphics[width=\linewidth]{<bi_figure>.png}
-% \caption{<Caption written by the BI author, naming the filter and denominator.>}
-% \label{fig:bi}
-% \end{figure}
+\subsection{Trip patterns across time and location}
+
+\subsubsection{Weekly variation in daily trips}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.82\linewidth]{bi/fig01_weekday_effect.png}
+\caption{Estimated weekday differences in daily trip volume.}
+\label{fig:bi-weekday}
+\end{figure}
+
+The regression of log daily trips used 731 days, weekday indicators and
+year-month fixed effects for the 24 calendar months. Standard errors allowed
+for correlation between nearby days. The joint test provides strong evidence
+of weekly variation ($p < 0.001$).
+
+Saturday had the highest adjusted trip level, followed by Friday, while Monday
+had the lowest. Relative to the geometric mean of the seven fitted weekday
+levels, Saturday was 18.30\% higher, Friday was 10.83\% higher and Monday was
+13.78\% lower (Figure~\ref{fig:bi-weekday}).
+
+\subsubsection{Monthly variation and annual growth}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\linewidth]{bi/fig02_monthly_trend.png}
+\caption{Observed daily trips and a smooth curve through monthly daily averages.}
+\label{fig:bi-monthly}
+\end{figure}
+
+Total trips rose by 3.00\% in 2024 compared with 2023, while daily averages rose
+by 2.72\% after accounting for the extra day. July and August were relatively
+quiet in both years, with August recording the lowest monthly daily average.
+Two years of data cannot establish a stable annual seasonal pattern
+(Figure~\ref{fig:bi-monthly}).
+
+\subsubsection{Geographic distribution}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.82\linewidth]{bi/fig03_top15_zones.png}
+\caption{Top 15 pickup zones by total recorded trips in 2023 and 2024.}
+\label{fig:bi-zones}
+\end{figure}
+
+The 15 busiest pickup zones account for 18.7\% of all recorded trips. LaGuardia
+Airport and JFK Airport rank first and second. Several central Manhattan and
+Brooklyn zones also appear near the top. Most trips occur outside these 15
+zones, so planning should consider both major pickup locations and the wider
+service area (Figure~\ref{fig:bi-zones}).
+
+\subsubsection{Trip volume by weekday and hour}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\linewidth]{bi/fig04_weekday_hour_heat.png}
+\caption{Average trips by weekday and pickup hour, in thousands.}
+\label{fig:bi-weekday-hour}
+\end{figure}
+
+Weekday mornings show a local peak around 08:00, followed by another busy period
+from 17:00 to 19:59. High volumes continue into the late evening on Fridays and
+Saturdays, particularly from 18:00 to 23:59. Saturday from 23:00 to 23:59 is the
+busiest weekday-hour combination, averaging about 46{,}500 trips per Saturday
+during that hour (Figure~\ref{fig:bi-weekday-hour}).
+
+\subsubsection{Waiting time by weekday and hour}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\linewidth]{bi/fig05_wait_weekday_hour.png}
+\caption{Average request-to-pickup waiting time by weekday and pickup hour,
+restricted to \code{wait\_valid = 1}.}
+\label{fig:bi-wait-hour}
+\end{figure}
+
+Waiting times are generally longer during the early morning, particularly from
+00:00 to 04:59 on Saturdays, Sundays and Mondays. They are also elevated at
+23:00 on Saturdays and Sundays. Weekday waits are usually shorter around 10:00
+to 11:59. The longest average is 6.26~minutes on Sundays from 04:00 to 04:59
+(Figure~\ref{fig:bi-wait-hour}).
+
+\subsubsection{Business insights for service planning}
+
+\begin{itemize}
+\item Plan driver availability around the weekly pattern. Friday and Saturday
+      evenings are strong candidates for additional coverage. Use local trip
+      counts to decide which zones need attention, including major airports and
+      busy central areas.
+\item Assess waiting time separately from trip volume. Some early-morning
+      periods have relatively few trips but long waits. These periods may be
+      worth testing for targeted driver incentives.
+\item Prioritize periods with both high volume and long waits. Late Saturday
+      evening is a candidate for closer analysis.
+\item Adjust capacity gradually during quieter months. July and August were
+      quieter in both observed years, but future planning should also consider
+      recent bookings and local events.
+\end{itemize}
+
 % ---------------------------------------------------------------------
+\subsection{Uber and Lyft comparison}
+
+\subsubsection{Trip share and regional mix}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.80\linewidth]{bi/fig06_platform_share.png}
+\caption{Monthly trip shares within the combined Uber and Lyft dataset.}
+\label{fig:bi-share}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.72\linewidth]{bi/fig07_borough_mix.png}
+\caption{Distribution of each platform's trips by pickup borough.}
+\label{fig:bi-borough}
+\end{figure}
+
+The two platforms have a similar ranking of pickup boroughs, with Manhattan
+first, followed by Brooklyn and Queens (Figures~\ref{fig:bi-share}
+and~\ref{fig:bi-borough}).
+
+\subsubsection{Waiting time across the day}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\linewidth]{bi/fig08_wait_by_platform.png}
+\caption{Average request-to-pickup waiting time by platform and pickup hour,
+restricted to \code{wait\_valid = 1}.}
+\label{fig:bi-wait-platform}
+\end{figure}
+
+Lyft has higher average waits in all 24 hourly groups: 5.24~minutes overall,
+compared with Uber's 4.54~minutes, a gap of about 42~seconds
+(Figure~\ref{fig:bi-wait-platform}).
+
+\subsubsection{Potential areas for Lyft service pilots}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=0.92\linewidth]{bi/fig09_uber_pressure.png}
+\caption{Uber operational pressure hotspots by pickup borough and hour.}
+\label{fig:bi-pressure}
+\end{figure}
+
+Uber's average wait reaches 7.49~minutes in Staten Island at 03:00 and
+6.17~minutes in Queens at 23:00 (Figure~\ref{fig:bi-pressure}).
+
+\subsubsection{Business insights for Lyft}
+
+\begin{itemize}
+\item Reallocate drivers towards Staten Island and Queens to improve
+      competitiveness in these regions, where Uber's waits are longest.
+\item Test targeted driver incentives from 23:00 to 04:59. Start with a small
+      pilot in zones with meaningful trip volume and long waits. Check whether
+      shorter waits justify the additional cost.
+\item Evaluate the pilot before expanding it. Compare waits and completed trips
+      with similar areas without the pilot. Include incentive costs and
+      cancellations if available.
+\end{itemize}
 
 \part{Synthesis}
 
