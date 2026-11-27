@@ -1,7 +1,7 @@
 % =====================================================================
 %  CS5488 Group 101 -- Project Report
 %  Compile with LaTeX Workshop (latexmk / pdflatex, UTF-8).
-%  Images are read from ../project/data/output/ (see \graphicspath).
+%  Images use the repository output path, with figs/ as a local fallback.
 % =====================================================================
 \documentclass[11pt,a4paper]{article}
 
@@ -19,7 +19,7 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{fancyhdr}
 
-\graphicspath{{../project/data/output/}}
+\graphicspath{{../project/data/output/}{figs/}}
 \captionsetup{font=small,labelfont=bf}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{0.45em}
@@ -438,20 +438,21 @@ names the one it is taken from:
 
 \begin{itemize}
 \item $N_{\text{all}} = 471{,}960{,}468$ --- every record in the release;
-\item $N_{\text{flag}} = 467{,}142{,}106$ --- records passing all three
-      validation flags of Section~\ref{sec:data};
-\item $N_{\text{wait}} \subseteq N_{\text{flag}}$ --- the subset with
-      \code{wait\_valid = 1}, defined in Section~\ref{sec:data} as a
-      request-to-pickup wait between 0 and 120~minutes. The bound removes
-      missing, negative \emph{and} implausibly long waits, so it is stricter
-      than a simple non-negativity filter.
+\item $N_{\text{wait}} = 467{,}359{,}108$ --- records with
+      \code{wait\_valid = 1}, that is a request-to-pickup wait between 0 and
+      120~minutes as defined in Section~\ref{sec:data}. The bound removes
+      missing, negative \emph{and} implausibly long waits;
+\item $N_{\text{flag}} = 467{,}142{,}106$ --- records
+      passing all three validation flags. Because \code{wait\_valid} is one of
+      the three, the fully validated set is a subset of the wait-valid set and
+      contains 217{,}002 fewer rows.
 \end{itemize}
 
-Unless a sentence says otherwise, percentages of trip volume are taken over
-$N_{\text{flag}}$ and every waiting-time statistic over $N_{\text{wait}}$.
-Counts quoted in millions are counts, not percentages, and also refer to
-$N_{\text{flag}}$. Weekly patterns and longer waits in specific periods provide
-a basis for testing service improvements.
+Trip volume and share are computed over $N_{\text{all}}$, and every
+waiting-time statistic over $N_{\text{wait}}$. $N_{\text{flag}}$ is used only by
+the unsupervised track in Part~I, where all three flags must hold before
+sampling. Weekly patterns and longer waits in specific periods provide a basis
+for testing service improvements.
 
 % ---------------------------------------------------------------------
 \subsection{Trip patterns across time and location}
@@ -470,7 +471,7 @@ of 4.7 hundred million rows.
 Two conventions hold throughout. Platform is a licensee code:
 \code{HV0003} is reported as Uber and \code{HV0005} as Lyft, which is a
 licensee-level mapping and not a brand-level one. And each chart states the
-population it uses: volume charts are computed over $N_{\text{flag}}$ and
+population it uses: volume charts are computed over $N_{\text{all}}$ and
 waiting-time charts over $N_{\text{wait}}$.
 
 \subsubsection{Weekly variation in daily trips}
@@ -478,12 +479,14 @@ waiting-time charts over $N_{\text{wait}}$.
 \begin{figure}[t]
 \centering
 \includegraphics[width=0.82\linewidth]{bi/fig01_weekday_effect.png}
-\caption{Estimated weekday differences in daily trip volume.}
+\caption{Estimated weekday differences in daily trip volume
+($N_{\text{all}}$), with pointwise 95\% HAC confidence intervals.}
 \label{fig:bi-weekday}
 \end{figure}
 
-The regression of log daily trips used 731 days, weekday indicators and
-year-month fixed effects for the 24 calendar months. Because consecutive days
+The regression of log daily trips used all recorded trips ($N_{\text{all}}$)
+across 731 days, weekday indicators and year-month fixed effects for the
+24 calendar months. Because consecutive days
 share weather, holidays and residual demand, the standard errors are
 heteroskedasticity- and autocorrelation-consistent (HAC, Newey--West) with
 14 lags rather than the ordinary OLS ones, and the intervals in
@@ -496,24 +499,29 @@ had the lowest. The percentages are relative to the geometric mean of the seven
 fitted weekday levels, which is the natural baseline in a log-linear model with
 weekday dummies: it is the level of an average week, not the level of any one
 day. On that baseline Saturday was 18.30\% higher, Friday was 10.83\% higher
-and Monday was 13.78\% lower. The weekly rhythm of urban demand is itself well
-documented~\cite{ke2017}, so the finding is the size of the effect rather than
-its existence.
+and Monday was 13.78\% lower. Related forecasting work uses spatial and temporal
+information to predict short-term ride-service demand~\cite{ke2017}; the
+weekday effect sizes reported here are estimated from our NYC data.
 
 \subsubsection{Monthly variation and annual growth}
 
 \begin{figure}[t]
 \centering
 \includegraphics[width=\linewidth]{bi/fig02_monthly_trend.png}
-\caption{Observed daily trips and a smooth curve through monthly daily averages.}
+\caption{Observed daily trips and a smooth curve through monthly daily averages
+($N_{\text{all}}$).}
 \label{fig:bi-monthly}
 \end{figure}
 
-Total trips rose by 3.00\% in 2024 compared with 2023 (counts over
-$N_{\text{flag}}$), while the average per day rose by only 2.72\%, because 2024
-has 366 days rather than 365: $3.00\% \times 365/366 = 2.72\%$. July and August
-were relatively quiet in both years, with August recording the lowest monthly
-daily average.
+Total trips rose from 232{,}490{,}020 in 2023 to 239{,}470{,}448 in 2024,
+an increase of 3.00\% (counts over $N_{\text{all}}$). The average per day rose
+by 2.72\%, after accounting for 366 days in 2024 and 365 in 2023:
+\[
+\left(\frac{239{,}470{,}448}{232{,}490{,}020}
+\times\frac{365}{366}-1\right)\times100\% \approx 2.72\%.
+\]
+July and August were relatively quiet in both years, with August recording the
+lowest monthly daily average.
 Two years of data cannot establish a stable annual seasonal pattern
 (Figure~\ref{fig:bi-monthly}).
 
@@ -523,12 +531,12 @@ Two years of data cannot establish a stable annual seasonal pattern
 \centering
 \includegraphics[width=0.82\linewidth]{bi/fig03_top15_zones.png}
 \caption{Top 15 pickup zones by trip count, 2023--2024. The 15 zones account
-for 18.7\% of $N_{\text{flag}} = 467.1$~million trips.}
+for 18.7\% of the 472.0~million recorded trips ($N_{\text{all}}$).}
 \label{fig:bi-zones}
 \end{figure}
 
-The 15 busiest pickup zones account for 18.7\% of the flag-valid trips
-($N_{\text{flag}}$). LaGuardia Airport and JFK Airport rank first and second.
+The 15 busiest pickup zones account for 18.7\% of all recorded trips
+($N_{\text{all}}$). LaGuardia Airport and JFK Airport rank first and second.
 Several central Manhattan and Brooklyn zones also appear near the top. The
 remaining 81.3\% of trips are picked up outside these 15 zones, so planning
 should consider both major pickup locations and the wider service area
@@ -540,15 +548,16 @@ should consider both major pickup locations and the wider service area
 \centering
 \includegraphics[width=0.92\linewidth]{bi/fig04_weekday_hour_heat.png}
 \caption{Average trips by weekday and pickup hour, in thousands
-($N_{\text{flag}}$).}
+($N_{\text{all}}$).}
 \label{fig:bi-weekday-hour}
 \end{figure}
 
 Weekday mornings show a local peak around 08:00, followed by another busy period
 from 17:00 to 19:59. High volumes continue into the late evening on Fridays and
 Saturdays, particularly from 18:00 to 23:59. Saturday from 23:00 to 23:59 is the
-busiest weekday-hour combination, averaging about 46{,}500 trips per Saturday
-during that hour (Figure~\ref{fig:bi-weekday-hour}).
+busiest weekday-hour combination, averaging about 46{,}500 recorded trips per
+Saturday during that hour, using $N_{\text{all}}$
+(Figure~\ref{fig:bi-weekday-hour}).
 
 \subsubsection{Waiting time by weekday and hour}
 
@@ -606,7 +615,7 @@ before anything is changed, and Section~\ref{sec:discussion} explains why.
 \centering
 \includegraphics[width=0.80\linewidth]{bi/fig06_platform_share.png}
 \caption{Monthly trip shares within the combined Uber and Lyft dataset
-($N_{\text{flag}}$).}
+($N_{\text{all}}$).}
 \label{fig:bi-share}
 \end{figure}
 
@@ -614,16 +623,18 @@ before anything is changed, and Section~\ref{sec:discussion} explains why.
 \centering
 \includegraphics[width=0.72\linewidth]{bi/fig07_borough_mix.png}
 \caption{Distribution of each platform's trips by pickup borough
-($N_{\text{flag}}$).}
+($N_{\text{all}}$).}
 \label{fig:bi-borough}
 \end{figure}
 
 The two platforms rank the pickup boroughs almost identically, with Manhattan
 first, followed by Brooklyn and Queens (Figure~\ref{fig:bi-borough}). The
-monthly split between them stays close to even across the two years and drifts
-only slowly, so neither platform gains ground at the other's expense over this
-window (Figure~\ref{fig:bi-share}). Platform competition of this kind is known
-to shift both supply and waiting time~\cite{cramer2016}.
+monthly share of Uber rises from 73.5\% in January 2023 to
+75.6\% in December 2024, within a range of 69.6--76.1\%, while Lyft falls by
+about 2.1 percentage points over the same window
+(Figure~\ref{fig:bi-share}). The movement is gradual but directional. In a
+separate comparison of Uber and taxis, Cramer and Krueger report higher
+capacity utilisation for Uber drivers~\cite{cramer2016}.
 
 \subsubsection{Waiting time across the day}
 
@@ -655,8 +666,9 @@ divided by valid trip count, over $N_{\text{wait}}$.}
 \label{fig:bi-pressure}
 \end{figure}
 
-The highest mean waits are 7.49~minutes in Staten Island in the 04:00 hour and
-6.17~minutes in Queens at 23:00 (Figure~\ref{fig:bi-pressure}). Both are
+The highest mean wait is 7.49~minutes in Staten Island from 03:00 to 03:59;
+Queens reaches 6.17~minutes from 23:00 to 23:59
+(Figure~\ref{fig:bi-pressure}). Both are
 borough-hour cells, not borough averages. The Staten Island cells rest on far
 fewer trips than the Manhattan ones, so they locate candidates for a pilot;
 they do not estimate the typical wait in a borough. Waiting time and spatial
@@ -774,7 +786,7 @@ is to say where such a pilot is worth running, not what its result will be.
 
 We set out to describe 471{,}960{,}468 New York City for-hire vehicle trips, to find unusual trips without labels, and to test whether one workstation could carry the analysis. All three questions have answers, and each answer comes with a boundary.
 
-On description, a flag-then-filter pipeline keeps 99.0\% of the records after flag filtering and produces aggregate tables small enough for BI tools: 8.65~M detail rows and 4.42~M overview rows in 558~MB, against 11.6~GB of raw Parquet. On unsupervised detection, an Isolation Forest with an empirical IQR threshold flags 13{,}577 trips (0.291\% of the scored sample), and those trips are extreme by three independent measures: 13.0$\times$ the median distance, 7.9$\times$ the median fare and 212$\times$ the share of trips over 50 miles. On interpretation, the flagged trips split into two stable families, \emph{short\_high\_tip} (9{,}791 trips, tipped, high fare per mile) and \emph{long\_low\_tip} (3{,}786 trips, 56.3\% untipped), which share the same top-3 SHAP drivers ($\rho = 0.9833$) and therefore differ in degree rather than in kind. On engineering, the controlled study measures 1.44--1.63$\times$ for a two-cluster $k$-means at four cores, 1.79--1.89$\times$ for an eight-cluster bisecting $k$-means at eight cores, and 4.38$\times$ for eight-thread forest scoring, with a serial fraction of 0.295--0.375 that explains why the Spark gains stop where they do.
+On description, the pipeline retains all 471{,}960{,}468 records with validity flags and produces aggregate tables small enough for BI tools: 8.65~M detail rows and 4.42~M overview rows in 558~MB, against 11.6~GB of raw Parquet. BI volume and share statistics use all records, while waiting-time statistics use the 467{,}359{,}108 wait-valid records. The unsupervised track separately retains 467{,}142{,}106 records (99.0\%) after applying all three validity flags, before feature filtering and sampling. On unsupervised detection, an Isolation Forest with an empirical IQR threshold flags 13{,}577 trips (0.291\% of the scored sample), and those trips are extreme by three independent measures: 13.0$\times$ the median distance, 7.9$\times$ the median fare and 212$\times$ the share of trips over 50 miles. On interpretation, the flagged trips split into two stable families, \emph{short\_high\_tip} (9{,}791 trips, tipped, high fare per mile) and \emph{long\_low\_tip} (3{,}786 trips, 56.3\% untipped), which share the same top-3 SHAP drivers ($\rho = 0.9833$) and therefore differ in degree rather than in kind. On engineering, the controlled study measures 1.44--1.63$\times$ for a two-cluster $k$-means at four cores, 1.79--1.89$\times$ for an eight-cluster bisecting $k$-means at eight cores, and 4.38$\times$ for eight-thread forest scoring, with a serial fraction of 0.295--0.375 that explains why the Spark gains stop where they do.
 
 On business intelligence, the population turns out to be strongly structured in time and
 space. Trip volume follows a weekly cycle that is not simply a weekend effect ---
@@ -831,7 +843,7 @@ All code is in \code{project/code/}. The pipeline runs in this order:
 \item \path{ml/analysis/10_robust_clustering_rowkeyed.py}
 \item \path{ml/analysis/11_final_shap_plots.py}
 \end{itemize}
-The scaling study is reproduced with \path{ml/experiments/parallel_scaling/run_scaling_study.py}; the analysis-only path regenerates \code{checks.json} and \code{MANIFEST.json} without re-running the fits.
+The scaling study uses \path{ml/experiments/parallel_scaling/run_scaling_study.py}. The analysis-only path regenerates \code{checks.json} and \code{MANIFEST.json} without re-running the fits.
 
 Environment: Python 3.14.6 (\code{D:\textbackslash Anaconda\textbackslash python.exe}), PySpark 4.2.1, scikit-learn 1.9.0, pandas 2.3.3, on Windows 11 with an i7-12700H (14 physical, 20 logical cores) and 32~GB of RAM. The cleaned table, the Parquet release and the sampled tables are excluded from the submission for size reasons; their structure, row counts and file counts are documented in \code{project/README.md}, and the small artefacts that back every number in this report are included.
 
