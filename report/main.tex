@@ -652,6 +652,49 @@ The compute side is more modest. Spark clustering scales at 1.4--1.9$\times$ on 
 \item \textbf{One number is document-level.} The 80.49\% full-population zero-tip share comes from a full-table query recorded in the project documents; unlike the cluster statistics, it has no persisted artefact in the repository, and it is labelled accordingly.
 \end{enumerate}
 
+\subsection{Data coverage and measurement limitations}
+
+The dataset records completed trips, not travel demand. Cancelled requests, failed
+bookings and the number of available drivers are absent, so a low trip count cannot be
+read as low demand, and a long wait cannot on its own be read as a driver shortage.
+Every statement in Part~II is therefore a statement about recorded trips, and the two
+quantities it can measure --- volume and request-to-pickup wait --- have to be read
+together rather than as proxies for supply and demand.
+
+Waiting-time statistics are restricted to the valid range of 0--120~minutes. The bound
+removes physically implausible observations, but it also removes some genuine extremes,
+and the share removed is not constant across hours, zones or platforms: a period whose
+waits are trimmed more heavily will look faster than it is. The exclusion rate should
+therefore be reported alongside every waiting-time estimate, and the sensitivity of a
+comparison to a wider or narrower window should be checked before any operational
+conclusion is drawn from it.
+
+\subsection{Time span and statistical uncertainty}
+
+Two years support a comparison between 2023 and 2024 but not a claim about a stable
+annual season. The quiet July and August may be cyclical, may be temporary, or may
+reflect a change in travel behaviour; with weather, public holidays and major events
+left out of the model, the cause cannot be identified from this data. The same caution
+applies to the monthly curve in Figure~\ref{fig:bi-monthly}: it describes 24 points, it
+does not estimate a seasonal component.
+
+Most waiting-time comparisons in Part~II are descriptive --- an average per platform and
+hour, with no interval attached. Repeating the comparison month by month and year by
+year separates persistent differences from transient ones, and that is the check we rely
+on, but it is a consistency argument rather than a significance test. Where a difference
+is small, as with the roughly 42-second gap between the two platforms, a confidence
+interval is the right next step.
+
+\subsection{From descriptive findings to business decisions}
+
+None of the interventions suggested above should be read as a recommendation to act.
+Before rollout, each one should be costed against local trip volume, the wait-time
+distribution and driver availability in that specific area, because a zone-average gap
+can be produced by a handful of hours. A small pilot in comparable untreated areas, run
+long enough to cover a full weekly cycle, is what would separate a real improvement in
+waits and completed trips from a seasonal or compositional effect. The value of Part~II
+is to say where such a pilot is worth running, not what its result will be.
+
 % ---------------------------------------------------------------------
 \section{Conclusion and Future Work}
 
@@ -659,7 +702,27 @@ We set out to describe 471{,}960{,}468 New York City for-hire vehicle trips, to 
 
 On description, a flag-then-filter pipeline keeps 99.0\% of the records after flag filtering and produces aggregate tables small enough for BI tools: 8.65~M detail rows and 4.42~M overview rows in 558~MB, against 11.6~GB of raw Parquet. On unsupervised detection, an Isolation Forest with an empirical IQR threshold flags 13{,}577 trips (0.291\% of the scored sample), and those trips are extreme by three independent measures: 13.0$\times$ the median distance, 7.9$\times$ the median fare and 212$\times$ the share of trips over 50 miles. On interpretation, the flagged trips split into two stable families, \emph{short\_high\_tip} (9{,}791 trips, tipped, high fare per mile) and \emph{long\_low\_tip} (3{,}786 trips, 56.3\% untipped), which share the same top-3 SHAP drivers ($\rho = 0.9833$) and therefore differ in degree rather than in kind. On engineering, the controlled study measures 1.44--1.63$\times$ for a two-cluster $k$-means at four cores, 1.79--1.89$\times$ for an eight-cluster bisecting $k$-means at eight cores, and 4.38$\times$ for eight-thread forest scoring, with a serial fraction of 0.295--0.375 that explains why the Spark gains stop where they do.
 
+On business intelligence, the population turns out to be strongly structured in time and
+space. Trip volume follows a weekly cycle that is not simply a weekend effect ---
+relative to the geometric mean of the seven fitted weekday levels, Saturday is 18.30\%
+higher, Friday 10.83\% higher and Monday 13.78\% lower --- and it is concentrated: the 15
+busiest pickup zones carry 18.7\% of all recorded trips, with the two airports first and
+second. Waiting time does not track volume. The longest waits sit in the early hours, up
+to 6.26~minutes on Sundays from 04:00 to 04:59, while some of the busiest hours are among
+the fastest, and the two platforms differ in level across all 24 hourly groups
+(5.24 against 4.54~minutes). The practical contribution is narrower than a demand model:
+it identifies the periods and places where a targeted pilot is worth running.
+
 Three things would change the result most, in order. First, a 10~M-row replication of the scaling study would test whether the four-core and eight-core conclusions survive an order of magnitude more data; this is the cheapest and most informative next step. Second, a supervised tip model --- with a proper time-based split and the zero-tip outcome modelled separately --- would turn the descriptive tipping structure into a predictive result; gradient-boosted trees are the natural candidate~\cite{xgboost}, and the cost calibration already done suggests it fits in a working day. Third, a hand-labelled validation set of roughly 200 flagged and 200 normal trips would let a future report state precision and recall, which this report cannot.
+
+Two further extensions come from the descriptive side rather than from the modelling
+side. Extending the observation window and attaching weather, holiday and event
+calendars would let the monthly pattern be tested rather than described, and request,
+cancellation and driver-availability records --- none of which the TLC release contains
+--- would turn the waiting-time statistics into a measure of unmet demand rather than of
+service once a trip has begun. Finer spatial resolution, and an interval reported around
+each wait estimate, are the cheaper of the two and are prerequisites for evaluating any
+pilot.
 
 The methodological lesson is the one we would keep if we had to throw everything else away. Every number in this report is either an artefact with a path, a document-level measurement with a label, or a derived value with a stated inference. That discipline cost us time --- three of the defects in Section~\ref{sec:bugs} were found only because a check was written to contradict a number we liked --- but it is the difference between a result and a plausible-looking output.
 
