@@ -1,10 +1,7 @@
 % =====================================================================
-%  CS5488 Group 101 -- Project Report (initial draft)
+%  CS5488 Group 101 -- Project Report
 %  Compile with LaTeX Workshop (latexmk / pdflatex, UTF-8).
 %  Images are read from ../project/data/output/ (see \graphicspath).
-%  Ownership: the front matter, Part I (Sections 1-4) and Part III
-%  (Sections 6-7) are drafted by Yuebin Gong; Part II (Section 5, BI)
-%  is reserved for Shiyin Chen.
 % =====================================================================
 \documentclass[11pt,a4paper]{article}
 
@@ -108,7 +105,7 @@ Two properties of the source shape everything that follows. First, the release i
 
 \subsection{Organisation of the report}
 
-The report has three parts. Part~I (Sections~2--4) covers the data foundation and the unsupervised track: preparation, the Isolation Forest, the clustering and the scaling study. Part~II (Section~5) is the business-intelligence component; it starts from the validated table, documents the BI-side preparation and reports the descriptive findings, and its internal structure is left to its author. Part~III (Sections~6--7) reads the two tracks together, records the defects we repaired, states the limitations and closes with future work. Section~1 is shared by both tracks.
+The report has three parts. Part~I (Sections~2--4) covers the data foundation and the unsupervised track: preparation, the Isolation Forest, the clustering and the scaling study. Part~II (Section~5) is the business-intelligence component; it starts from the validated table and reports descriptive findings on trip volume, waiting time and platform differences. Part~III (Sections~6--7) reads the two tracks together, records the defects we repaired, states the limitations and closes with future work. Section~1 is shared by both tracks.
 
 % ---------------------------------------------------------------------
 \part{Data Engineering and Unsupervised Analytics}
@@ -116,7 +113,7 @@ The report has three parts. Part~I (Sections~2--4) covers the data foundation an
 \section{Data and Preprocessing}
 \label{sec:data}
 
-Sections~2.1--2.2 describe the foundation shared by both tracks: the release, the row-count chain and the validation flags. Sections~2.3--2.5 are specific to the unsupervised track (features, sampling and fidelity). The BI track's own preparation is part of Section~\ref{sec:bi}, written by the BI author. The dependency runs one way: the aggregate tables are built from the validated table, while the sampling and the models never read them.
+Sections~2.1--2.2 describe the foundation shared by both tracks: the release, the row-count chain and the validation flags. Sections~2.3--2.5 are specific to the unsupervised track (features, sampling and fidelity). The BI track's own analysis is in Section~\ref{sec:bi}. The dependency runs one way: the aggregate tables are built from the validated table, while the sampling and the models never read them.
 
 \subsection{Scale, storage and the row-count chain}
 
