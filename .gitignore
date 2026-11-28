@@ -63,3 +63,10 @@ venv/
 /report/abstract_options.png
 /report/review_*.md
 /report/report.tex
+# Cover sheet contains student IDs/names; keep the filled copy local only
+/report/*.doc
+/report/*.docx
+/report/Project_cover_sheet*.pdf
+
+# Canvas-only presentation materials; not part of the public repo
+/presentation/
